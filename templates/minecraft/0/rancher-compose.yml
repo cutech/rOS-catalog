@@ -116,13 +116,13 @@
       description: "JVM memory heap size initial allocation in [g|G|m|M|k|K]"
       default: 512M
       required: false
-      type: "int"
+      type: "string"
     - variable: "MAX_MEMORY"
       label: "JVM -Xmx"
       description: "JVM memory heap size maximum allocation in [g|G|m|M|k|K]"
       default: 1G
       required: false
-      type: "int"
+      type: "string"
     - variable: "MAX_PLAYERS"
       label: "Max players"
       description: "Maximum number of players"
