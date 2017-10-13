@@ -23,6 +23,10 @@ Minecraft:
     - TYPE
   tty: true
   image: cutech/minecraft-server
+  ports:
+    -: 25565
+    -: 25566/udp
+    -: 25575
   stdin_open: true
   labels:
     io.rancher.sidekicks: MinecraftData
