@@ -11,17 +11,17 @@
       type: "enum"
       options:
         - TRUE
-    - variable: "SCALE"
-      label: "Scale"
-      description: "How many servers to run"
-      default: 1
-      required: true
-      type: "int"
-    - variable: "PORT"
-      label: "Port number"
-      description: "On which port should the Load Balancer listen?"
+    - variable: "ENABLE_QUERY"
+      label: "Query enable"
+      description: "Enable Minecraft query port"
+      default: true
+      required: false
+      type: "boolean"
+    - variable: "QUERY_PORT"
+      label: "Query port number"
+      description: "On which port (UDP, default 25565) should the query protocol bind?"
       default: 25565
-      required: true
+      required: false
       type: "int"
     - variable: "VERSION"
       label: "Minecraft Version"
@@ -107,21 +107,57 @@
     - variable: "VOLUME_DRIVER"
       description: "Name of Convoy Storage Pool, if one is used."
       type: "string"
+    - variable: "ICON"
+      label: "Icon URL"
+      description: "URL to download server icon, for 64x64 pixel png target"
+      type: "string"
+    - variable: "INIT_MEMORY"
+      label: "JVM -Xms"
+      description: "JVM memory heap size initial allocation in [g|G|m|M|k|K]"
+      default: 512M
+      required: false
+      type: "int"
+    - variable: "MAX_MEMORY"
+      label: "JVM -Xmx"
+      description: "JVM memory heap size maximum allocation in [g|G|m|M|k|K]"
+      default: 1G
+      required: false
+      type: "int"
+    - variable: "MAX_PLAYERS"
+      label: "Max players"
+      description: "Maximum number of players"
+      default: 20
+      required: true
+      type: "int"
+    - variable: "MAX_TICK_TIME"
+      label: "Max tick"
+      description: "The maximum number of milliseconds a single tick may take before the server watchdog stops the server"
+      default: 60000
+      required: false
+      type: "int"
+    - variable: "VIEW_DISTANCE"
+      label: "View Distance"
+      description: "Sets the server-side viewing radius, measured in chunks"
+      default: 10
+      required: false
+      type: "int"
+    - variable: "TYPE"
+      label: "Mod Type"
+      description: "Forge, Bukkit, Spigot, Paper, Feed-The-Beast (All default to latest version)"
+      required: false
+      type: "enum"
+      options:
+        - FORGE
+        - BUKKIT
+        - SPIGOT
+        - PAPER
+        - FTB
 Minecraft:
   scale: ${SCALE}
   health_check:
     port: 25565
     interval: 2000
     initializing_timeout: 30000
-    unhealthy_threshold: 3
-    strategy: recreate
-    response_timeout: 2000
-    healthy_threshold: 2
-MinecraftLB:
-  load_balancer_config: {}
-  health_check:
-    port: 42
-    interval: 2000
     unhealthy_threshold: 3
     strategy: recreate
     response_timeout: 2000
