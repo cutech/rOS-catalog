@@ -22,7 +22,7 @@ Minecraft:
     - VIEW_DISTANCE
     - TYPE
   tty: true
-  image: itzg/minecraft-server
+  image: cutech/minecraft-server
   stdin_open: true
   labels:
     io.rancher.sidekicks: MinecraftData
