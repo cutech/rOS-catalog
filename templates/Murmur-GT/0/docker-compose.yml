@@ -1,0 +1,7 @@
+murmur-gt:
+  image: cutech/docker-murmur-gt:latest
+  ports:
+  - 64738:64738
+  - 64738:64738/udp
+  - 27800:27800
+  - 27800:27800/udp
