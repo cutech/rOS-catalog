@@ -1,15 +1,10 @@
 .catalog:
-  name: murmur-gt
-  version: v1.2.18-1
+  name: mumble
+  version: latest
   description: |
-    Murmur is the server portion of Mumble, an open source, low-latency, high quality voice chat software
+    Mumble is an open source, low-latency, high quality voice chat software
     primarily intended for use while gaming.
-  uuid: murmurgt-0
+  uuid: mumble-0
 
-murmur:
+mumble:
   scale: 1
-
-service1:
-  labels:
-    # Selector label added to pick up other services
-	io.rancher.service.selector.container: murmur=murmur1
