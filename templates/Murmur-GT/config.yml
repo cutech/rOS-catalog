@@ -1,8 +1,6 @@
-name: murmur-gt
+name: Murmur-GT
 description: |
-  Murmur is the server portion of Mumble, an open source, low-latency, high quality voice chat software primarily intended for use while gaming. Based on Rancher's community (Rancher Cowboys) Mumble template with gametracker.com's GTmurmur plugin added.
-version: v1.2.18-1
-category: entertainment
-maintainer: cutech <cody@c-u-tech.com>
-license: GNU General Public License v2.0
-projectURL: https://github.com/cutech/rOS-catalog/templates/Murmur-GT
+  Mumble is an open source, low-latency, high quality voice chat software
+  primarily intended for use while gaming. Now with GTmurmur.
+version: v0.2.1
+category: Entertainment
