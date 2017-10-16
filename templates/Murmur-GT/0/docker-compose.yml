@@ -1,7 +1,9 @@
 murmur-gt:
   image: cutech/docker-murmur-gt:latest
+  labels:
+    io.rancher.service.selector.container: murmur-gt
   ports:
-  - 64738:64738
-  - 64738:64738/udp
-  - 27800:27800
-  - 27800:27800/udp
+  - "64738:64738"
+  - "64738:64738/udp"
+  - "27800:27800"
+  - "27800:27800/udp"
