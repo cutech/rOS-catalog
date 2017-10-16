@@ -8,3 +8,8 @@
 
 murmur:
   scale: 1
+
+service1:
+  labels:
+    # Selector label added to pick up other services
+	io.rancher.service.selector.container: murmur=murmur1
