@@ -1,5 +1,7 @@
 murmur-gt:
   image: cutech/docker-murmur-gt:latest
+  stdin_open: true
+  tty: true
   ports:
   - "64738:64738"
   - "64738:64738/udp"
