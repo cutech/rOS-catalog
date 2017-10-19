@@ -4,7 +4,7 @@
   description: |
     Mumble is an open source, low-latency, high quality voice chat software
     primarily intended for use while gaming, now with GTmurmur.
-  uuid: mumble-0
+  uuid: murmur-0
 
-mumble:
+murmur-gt:
   scale: 1
