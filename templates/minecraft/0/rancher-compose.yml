@@ -11,6 +11,7 @@
       type: "enum"
       options:
         - TRUE
+      default: true
     - variable: "ENABLE_QUERY"
       label: "Query enable"
       description: "Enable Minecraft query port"
