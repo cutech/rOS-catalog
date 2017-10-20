@@ -155,9 +155,9 @@
 Minecraft:
   health_check:
     port: 25565
-    interval: 2000
-    initializing_timeout: 60000
-    unhealthy_threshold: 6
+    interval: 8000
+    initializing_timeout: 2000
+    unhealthy_threshold: 10
     strategy: recreate
-    response_timeout: 4000
-    healthy_threshold: 4
+    response_timeout: 60000
+    healthy_threshold: 1
