@@ -1,5 +1,5 @@
 # Declare compose version
-version: '3'
+version: "3"
 services:
   virtualmin:
     image: debian:stretch
