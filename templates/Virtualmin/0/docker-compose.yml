@@ -37,3 +37,12 @@ services:
       - start
       - &&
       - /bin/bash
+VirtualminData:
+  image: busybox
+  labels:
+    io.rancher.container.start_once: 'true'
+  net: none
+  entrypoint: /home
+  volumes:
+    - ${DATA_VOLUME}/home
+  volume_driver: ${VOLUME_DRIVER}
