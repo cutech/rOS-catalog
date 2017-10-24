@@ -35,8 +35,6 @@ services:
       - service
       - webmin
       - start
-      - &&
-      - /bin/bash
 VirtualminData:
   image: busybox
   labels:
