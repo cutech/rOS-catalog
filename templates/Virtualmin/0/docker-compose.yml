@@ -2,6 +2,13 @@
 version: '2'
 services:
   virtualmin:
+  environment:
+      - FQDN
+      - UNINSTALL
+      - HOSTNAME
+      - MINIMAL
+      - BUNDLE
+      - DISABLE
     image: debian:stretch
     ports:
       - "20:20"
