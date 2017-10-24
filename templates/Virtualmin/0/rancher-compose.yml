@@ -42,3 +42,8 @@
       options:
         - "-u"
       default: ""
+    - variable: "HOSTNAME"
+      label: "Hostname"
+      description: "Server hostname"
+      type: "string"
+      required: true
