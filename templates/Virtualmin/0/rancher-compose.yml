@@ -34,3 +34,11 @@
         - "ubuntu:16.04"
         - "ubuntu:14.04"
       default: ""
+    - variable: "UNINSTALL"
+      label: "Uninstall"
+      description: "Removes all Virtualmin packages (do not use on a production system)"
+      required: false
+      type: "enum"
+      options:
+        - "-u"
+      default: ""
