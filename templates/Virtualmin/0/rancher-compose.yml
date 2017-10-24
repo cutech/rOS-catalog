@@ -60,3 +60,19 @@
       options:
         - "-s"
       default: ""
+    - variable: "MINIMAL"
+      label: "Minimal"
+      description: "Install a smaller subset of packages for low-memory/low-resource systems"
+      required: false
+      type: "enum"
+      options:
+        - "-m"
+      default: ""
+    - variable: "BUNDLE"
+      label: "Bundle"
+      description: "Choose bundle to install (LAMP or LEMP, defaults to LAMP)"
+      required: false
+      type: "enum"
+      options:
+        - "-b LAMP"
+        - "-b LEMP"
