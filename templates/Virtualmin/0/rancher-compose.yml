@@ -76,3 +76,4 @@
       options:
         - "-b LAMP"
         - "-b LEMP"
+      default: ""
