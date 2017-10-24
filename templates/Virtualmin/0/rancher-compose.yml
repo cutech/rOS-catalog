@@ -47,3 +47,16 @@
       description: "Server hostname"
       type: "string"
       required: true
+    - variable: "FQDN"
+      label: "FQDN"
+      description: "Fully qualified domain name"
+      required: true
+      type: "string"
+    - variable: "SETUP"
+      label: "Setup"
+      description: "Setup software repositories and exit (no installation or configuration)"
+      required: false
+      type: "enum"
+      options:
+        - "-s"
+      default: ""
