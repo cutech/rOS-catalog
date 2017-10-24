@@ -2,7 +2,7 @@
 version: '2'
 services:
   virtualmin:
-  environment:
+    environment:
       - FQDN
       - UNINSTALL
       - HOSTNAME
