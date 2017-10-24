@@ -77,3 +77,13 @@
         - "-b LAMP"
         - "-b LEMP"
       default: ""
+    - variable: "DISABLE"
+      label: "Disable"
+      description: "Disable feature [SCL|EPEL|PG]"
+      required: false
+      type: "enum"
+      options:
+        - "--disable SCL"
+        - "--disable EPEL"
+        - "--disable PG"
+      default: ""
