@@ -1,0 +1,8 @@
+name: Virtualmin
+description: |
+  Open Source Web Hosting and Cloud Control Panels
+version: v0.1
+category: webhosting
+maintainer: cutech <cody@c-u-tech.com>
+license: GNU General Public License v2.0
+projectURL: https://github.com/cutech/rOS-catalog/templates/virtualmin
