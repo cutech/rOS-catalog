@@ -1,5 +1,5 @@
 # Declare compose version
-version: '2'
+version: '3'
 services:
   virtualmin:
     environment:
@@ -9,7 +9,7 @@ services:
       - MINIMAL
       - BUNDLE
       - DISABLE
-    image: debian:stretch
+    image: ${OS}
     ports:
       - "20:20"
       - "21:21"
@@ -30,7 +30,7 @@ services:
       - "20000:20000"
       - "38532:38532"
       - "40259:40259"
-    hostname: "${HOSTNAME}"
+      hostname: ${HOSTNAME}
     tty: true
     stdin_open: true
-    command: [/bin/bash, -c, "printf admin\\nadmin\\n | passwd && sed -i s/true/false/ /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update -y && apt-get upgrade -y && apt-get -y install apt-utils curl dialog gnupg gnupg2 gnupg1 nano perl postgresql postgresql-client procps screen sudo ssh wget && chmod +x install.sh && wget http://software.virtualmin.com/gpl/scripts/install.sh && sh install.sh -f -n \"${FQDN}\" \"${UNINSTALL}\" \"${SETUP}\" \"${MINIMAL}\" \"${BUNDLE}\" \"${DISABLE}\" && apt-get install -y ffmpeg libapache2-mod-php libdbd-pg-perl php-geoip php-imagick php-dev php-memcached php-cgi php-cli php-common php-curl php-gd php-gmp php-imap php-ldap php-mcrypt php-mysql subversion && apt-get -y autoremove && service webmin start"]
+    command: [/bin/bash, -c, "printf admin\n${HOSTNAME}\n | passwd && sed -i s/true/false/ /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update -y && apt-get upgrade -y && apt-get -y install apt-utils curl dialog gnupg gnupg2 gnupg1 nano perl postgresql postgresql-client procps screen sudo ssh wget && wget http://software.virtualmin.com/gpl/scripts/install.sh && sh install.sh -f -n ${FQDN} ${UNINSTALL} ${SETUP} ${MINIMAL} ${BUNDLE} ${DISABLE} && chmod +x install.sh && apt-get install -y ffmpeg libapache2-mod-php libdbd-pg-perl php-geoip php-imagick php-dev php-memcached php-cgi php-cli php-common php-curl php-gd php-gmp php-imap php-ldap php-mcrypt php-mysql subversion && apt-get -y autoremove && service webmin start"]
