@@ -46,5 +46,5 @@ VirtualminData:
   net: none
   entrypoint: /virtualmin/home
   volumes:
-    - ${DATA_VOLUME}/virtualmin/home
+    - '${DATA_VOLUME}/virtualmin/home'
   volume_driver: ${VOLUME_DRIVER}
