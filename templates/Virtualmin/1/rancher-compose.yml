@@ -99,7 +99,7 @@
       default: ""
     - variable: "DATA_VOLUME"
       label: "Data Volume"
-      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/mnt/data:'; 'minecraft-data:'"
+      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/mnt/home:'; 'virtualmin-data:'"
       type: "string"
     - variable: "VOLUME_DRIVER"
       description: "Name of Convoy Storage Pool, if one is used."
