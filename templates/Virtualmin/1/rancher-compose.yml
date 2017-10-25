@@ -44,6 +44,11 @@
       description: "RancherOS is hardcoded at 22"
       type: "string"
       required: true
+    - variable: "DNS"
+      label: "Extra DNS"
+      description: "DNS External to host (127.0.0.1 is already set for container)"
+      type: "string"
+      required: false
     - variable: "UNINSTALL"
       label: "Uninstall"
       description: "Removes all Virtualmin packages (do not use on a production system)"
