@@ -4,11 +4,11 @@
   description: "Virtualmin server"
   uuid: virtualmin-0
   questions:
-    - variable: "PASSWD"
-      label: "Password"
-      description: "Root password"
-      type: "password"
-      required: true
+#    - variable: "PASSWD"
+#      label: "Password"
+#      description: "Root password"
+#      type: "password"
+#      required: true
     - variable: "OS"
       label: "Operating System"
       description: "Supported Operating Systems; CentOS/RHEL Linux 6 and 7 on x86_64 | Debian 7, 8, and 9, on i386 and amd64 | Ubuntu 14.04 LTS and 16.04 LTS, on i386 and amd64"
