@@ -33,7 +33,7 @@ Virtualmin:
   hostname: ${HOSTNAME}
   tty: true
   stdin_open: true
-  command: [/bin/bash, -c, "printf ${PASSWD}\\n${PASSWD}\\n | passwd && sed -i s/true/false/ /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update -y && apt-get upgrade -y && apt-get -y install apt-utils curl dialog gnupg gnupg2 gnupg1 nano perl postgresql postgresql-client procps screen sudo ssh wget && wget http://software.virtualmin.com/gpl/scripts/install.sh && sh install.sh -f -n ${FQDN} ${UNINSTALL} ${SETUP} ${MINIMAL} ${BUNDLE} ${DISABLE} && chmod +x install.sh && apt-get install -y ffmpeg libapache2-mod-php libdbd-pg-perl php-geoip php-imagick php-dev php-memcached php-cgi php-cli php-common php-curl php-gd php-gmp php-imap php-ldap php-mcrypt php-mysql subversion && apt-get -y autoremove && touch /etc/network/interfaces && service webmin start && /bin/bash"]
+  command: [/bin/bash, -c, "printf ${PASSWD}\\n${PASSWD}\\n | sudo passwd && sed -i s/true/false/ /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update -y && apt-get upgrade -y && apt-get -y install apt-utils curl dialog gnupg gnupg2 gnupg1 nano perl postgresql postgresql-client procps screen sudo ssh wget && wget http://software.virtualmin.com/gpl/scripts/install.sh && sh install.sh -f -n ${FQDN} ${UNINSTALL} ${SETUP} ${MINIMAL} ${BUNDLE} ${DISABLE} && chmod +x install.sh && apt-get install -y ffmpeg libapache2-mod-php libdbd-pg-perl php-geoip php-imagick php-dev php-memcached php-cgi php-cli php-common php-curl php-gd php-gmp php-imap php-ldap php-mcrypt php-mysql subversion && apt-get -y autoremove && touch /etc/network/interfaces && service webmin start && /bin/bash"]
   labels:
     io.rancher.sidekicks: VirtualminData
   volumes_from:
