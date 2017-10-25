@@ -10,9 +10,6 @@ services:
       - BUNDLE
       - DISABLE
     image: ${OS}
-    dns:
-      - 127.0.0.1
-      - 8.8.8.8
     ports:
       - "20:20"
       - "21:21"
