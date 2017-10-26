@@ -36,9 +36,10 @@ virtualmin:
   user: root
   command: [/bin/bash, -c, "sed -i s/true/false/ /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update -y && apt-get upgrade -y && apt-get -y install apt-utils curl dialog gnupg gnupg2 gnupg1 nano perl postgresql postgresql-client procps screen sudo ssh wget && wget http://software.virtualmin.com/gpl/scripts/install.sh && sh install.sh -f -n ${FQDN} ${UNINSTALL} ${SETUP} ${MINIMAL} ${BUNDLE} ${DISABLE} && chmod +x install.sh && apt-get install -y ffmpeg libapache2-mod-php libdbd-pg-perl php-geoip php-imagick php-dev php-memcached php-cgi php-cli php-common php-curl php-gd php-gmp php-imap php-ldap php-mcrypt php-mysql subversion && apt-get -y autoremove && printf \"${PASSWD}\\n${PASSWD}\\n\" | passwd &&  touch /etc/network/interfaces && cat /etc/resolv.conf > resolv.conf && sed -i s/\"# \"//g resolv.conf && cat resolv.conf > /etc/resolv.conf && service webmin start && screen -d -m -S vmin /bin/bash -c \"/bin/bash\""]
   labels:
-    io.rancher.sidekicks: VirtualminData
+    io.rancher.sidekicks: VirtualminData, VirtualminScripts
   volumes_from:
     - VirtualminData
+    - VirtualminScripts
 
 VirtualminData:
   image: busybox
@@ -48,4 +49,14 @@ VirtualminData:
   entrypoint: /bin/true
   volumes:
     - ${DATA_VOLUME}/home
+  volume_driver: ${VOLUME_DRIVER}
+
+VirtualminScripts:
+  image: busybox
+  labels:
+    io.rancher.container.start_once: 'true'
+  net: none
+  entrypoint: /bin/true
+  volumes:
+    - ${SCRIPT_VOLUME}/usr/share/webmin/virtual-server/scripts/
   volume_driver: ${VOLUME_DRIVER}
