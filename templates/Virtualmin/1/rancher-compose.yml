@@ -7,7 +7,7 @@
     - variable: "PASSWD"
       label: "Password"
       description: "Root password"
-      type: "string"
+      type: "password"
       required: true
     - variable: "OS"
       label: "Operating System"
