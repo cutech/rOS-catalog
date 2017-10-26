@@ -39,11 +39,16 @@
         - "ubuntu:16.04"
         - "ubuntu:14.04"
       default: ""
-    #- variable: "DNS"
-      #label: "Extra DNS"
-      #description: "DNS external to host server"
-      #type: "string"
-      #required: false
+    - variable: "DNS1"
+      label: "Extra DNS1"
+      description: "DNS1 in addition to host server"
+      type: "string"
+      required: false
+    - variable: "DNS2"
+      label: "Extra DNS2"
+      description: "DNS2 in addition to host server"
+      type: "string"
+      required: false
     - variable: "SSH"
       label: "SSH external port"
       description: "RancherOS is hardcoded at 22"
