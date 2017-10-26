@@ -7,9 +7,9 @@ virtualmin:
     - BUNDLE
     - DISABLE
   image: ${OS}
-  #dns:
-    #- 127.0.0.1
-    #- ${DNS}
+  dns:
+    - ${DNS1}
+    - ${DNS2}
   ports:
     - "20:20"
     - "21:21"
