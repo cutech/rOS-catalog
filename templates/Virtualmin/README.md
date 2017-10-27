@@ -19,7 +19,20 @@ Run ClamAV server scanner? No
 
 Run SpamAssassin server filter? No
 
-Run MySQL database server? Yes Run PostgreSQL database server? Yes PostgreSQL has been enabled, but cannot be used by Virtualmin. Use the PostgreSQL Database module to fix the problem. PostgreSQL Users x Add a new PostgreSQL user when a Unix user is added. x Update a PostgreSQL user when the matching Unix user is modified. x Delete a PostgreSQL user when the matching Unix user is deleted. Granted Privileges information_schema.sql_parts (postgres) postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER everyone x SELECT information_schema.sql_parts (template1) postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER everyone x SELECT Set MySQL password
+Run MySQL database server? Yes Run PostgreSQL database server? Yes 
+
+PostgreSQL has been enabled, but cannot be used by Virtualmin. Use the PostgreSQL Database module to fix the problem. 
+  
+  PostgreSQL Users 
+    x Add a new PostgreSQL user when a Unix user is added.
+    x Update a PostgreSQL user when the matching Unix user is modified.
+    x Delete a PostgreSQL user when the matching Unix user is deleted.
+  
+  Granted Privileges information_schema.sql_parts (postgres) 
+    postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
+    everyone x SELECT information_schema.sql_parts (template1)
+      postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
+      everyone x SELECT Set MySQL password
 
 MySQL configuration size
 
