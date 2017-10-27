@@ -12,7 +12,8 @@ Right-click on the Webmin tab in the upper left of the control panel and allow w
 
 Go back to the Virtualmin tab and finish the configuation;
 
-Preload Virtualmin libraries? Yes Run email domain lookup server? Yes
+Preload Virtualmin libraries? Yes 
+Run email domain lookup server? Yes
 
 Run ClamAV server scanner? No
 
