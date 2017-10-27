@@ -35,11 +35,15 @@ PostgreSQL has been enabled, but cannot be used by Virtualmin. Use the PostgreSQ
   
     postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
     
-    everyone x SELECT information_schema.sql_parts (template1)
+    everyone x SELECT 
+    
+  Granted Privileges information_schema.sql_parts (template1)
     
       postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
       
-      everyone x SELECT Set MySQL password
+      everyone x SELECT
+
+Set MySQL password
 
 MySQL configuration size
 
