@@ -4,7 +4,7 @@ docker exec -it [container-ID] /bin/bash
 
 [root@CaCrOS rancher]# service webmin start
 
-The docker-compose.yml command should have removed the comments from the /etc/resolv.conf added DNS servers, if not you will have to do it by hand with nano/vi (sed wont do it).
+The docker-compose.yml command *should* have removed the comments from the /etc/resolv.conf added DNS servers, if not you will have to do it by hand with nano/vi (sed wont do it).
 
 Go to https://your.external.fqdn:10000 and login to the contol panel as root
 
