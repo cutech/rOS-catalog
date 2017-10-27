@@ -1,4 +1,4 @@
-You may need to enter the Virtualmin container to start the Virtualmin server
+You may need to enter the Virtualmin container to start the Virtualmin server and will have to make some changes inside the container (see below)
 
 docker exec -it [container-ID] /bin/bash
 
@@ -23,15 +23,22 @@ Run MySQL database server? Yes Run PostgreSQL database server? Yes
 
 PostgreSQL has been enabled, but cannot be used by Virtualmin. Use the PostgreSQL Database module to fix the problem. 
   
-  PostgreSQL Users 
+  PostgreSQL Users:
+  
     x Add a new PostgreSQL user when a Unix user is added.
+    
     x Update a PostgreSQL user when the matching Unix user is modified.
+    
     x Delete a PostgreSQL user when the matching Unix user is deleted.
   
   Granted Privileges information_schema.sql_parts (postgres) 
+  
     postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
+    
     everyone x SELECT information_schema.sql_parts (template1)
+    
       postgres x SELECT x UPDATE x INSERT x DELETE x RULE x REFERENCES x TRIGGER
+      
       everyone x SELECT Set MySQL password
 
 MySQL configuration size
@@ -40,13 +47,29 @@ Primary nameserver
 
 Password storage mode
 
-Re-check and refresh configuation A problem was found with your Postfix virtual maps : No map sources were found in the Postfix configuration edit /etc/postfix/main.cf, add this line to the end: virtual_alias_maps = hash:/etc/postfix/virtual Webmin --> Postfix Mail Server --> Edit Config Files: virtual_alias_maps = hash:/etc/postfix/virtual Start Postfix/Reload Configuration
+Re-check and refresh configuation
 
-Re-check and refresh configuation The Procmail program needed for spam filtering does not appear to be installed on your system, or has not yet been set up properly in Webmin's Procmail Mail Filter module. If your system does not use spam filtering, it should be disabled in Virtualmin's module configuration page. edit /etc/postfix/main.cf, add this line to the end: mailbox_command = /usr/bin/procmail Webmin --> Postfix Mail Server --> Edit Config Files: mailbox_command = /usr/bin/procmail Start Postfix/Reload Configuration
+A problem was found with your Postfix virtual maps : No map sources were found in the Postfix configuration edit /etc/postfix/main.cf, add this line to the end: virtual_alias_maps = hash:/etc/postfix/virtual
 
-Re-check and refresh configuation The procmail command /usr/bin/procmail is owned by group mail, when it should be owned by root. Email may not be properly delivered or checked for spam. chgrp -v root /usr/bin/procmail
+Webmin --> Postfix Mail Server --> Edit Config Files: virtual_alias_maps = hash:/etc/postfix/virtual 
 
-Re-check and refresh configuation The procmail command /usr/bin/procmail has 100755 permissions, when it should be setuid and setgid to root. Email may not be properly delivered or checked for spam. chmod 4755 /usr/bin/procmail
+Start Postfix/Reload Configuration
+
+Re-check and refresh configuation The Procmail program needed for spam filtering does not appear to be installed on your system, or has not yet been set up properly in Webmin's Procmail Mail Filter module. If your system does not use spam filtering, it should be disabled in Virtualmin's module configuration page. edit /etc/postfix/main.cf, add this line to the end: mailbox_command = /usr/bin/procmail
+
+Webmin --> Postfix Mail Server --> Edit Config Files: mailbox_command = /usr/bin/procmail Start Postfix/Reload Configuration
+
+Re-check and refresh configuation
+
+The procmail command /usr/bin/procmail is owned by group mail, when it should be owned by root. Email may not be properly delivered or checked for spam.
+
+chgrp -v root /usr/bin/procmail
+
+Re-check and refresh configuation
+
+The procmail command /usr/bin/procmail has 100755 permissions, when it should be setuid and setgid to root. Email may not be properly delivered or checked for spam.
+
+chmod 4755 /usr/bin/procmail
 
 Re-check and refresh configuation...
 
