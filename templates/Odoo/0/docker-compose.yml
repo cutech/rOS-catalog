@@ -5,7 +5,7 @@ odoo:
   links:
     - db
   labels:
-    io.rancher.sidekicks: VirtualminData, VirtualminScripts
+    io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
   volumes_from:
     - OdooConfig
     - OdooAddons
