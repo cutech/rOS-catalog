@@ -9,7 +9,7 @@ odoo:
   volumes_from:
     - OdooConfig
     - OdooAddons
-	- OdooWebData
+    - OdooWebData
 
 db:
   image: postgres:9.4
