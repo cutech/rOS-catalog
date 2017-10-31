@@ -4,12 +4,17 @@ odoo:
     - ${PORT}:8069
   links:
     - db
-  labels:
-    io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
-  volumes_from:
-    - OdooConfig
-    - OdooAddons
-    - OdooWebData
+  volumes:
+    - /odoo/config:/etc/odoo
+    - /odoo/addons:/usr/lib/python3/dist-packages/odoo/addons
+    - /odoo/webdata:/var/lib/odoo
+    
+#  labels:
+#    io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
+#  volumes_from:
+#    - OdooConfig
+#    - OdooAddons
+#    - OdooWebData
 
 db:
   image: postgres:9.4
@@ -19,32 +24,32 @@ db:
   volumes:
     - odoo_db:/var/lib/postgresql/data
 
-OdooConfig:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - /odoo/config:/etc/odoo
-  volume_driver: ${VOLUME_DRIVER}
+#OdooConfig:
+#  image: busybox
+#  labels:
+#    io.rancher.container.start_once: 'true'
+#  net: none
+#  entrypoint: /bin/true
+#  volumes:
+#    - /odoo/config:/etc/odoo
+#  volume_driver: ${VOLUME_DRIVER}
 
-OdooAddons:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - /odoo/addons:/usr/lib/python3/dist-packages/odoo/addons
-  volume_driver: ${VOLUME_DRIVER}
-  
-OdooWebData:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - /odoo/webdata:/var/lib/odoo
-  volume_driver: ${VOLUME_DRIVER}
+#OdooAddons:
+#  image: busybox
+#  labels:
+#    io.rancher.container.start_once: 'true'
+#  net: none
+#  entrypoint: /bin/true
+#  volumes:
+#    - /odoo/addons:/usr/lib/python3/dist-packages/odoo/addons
+#  volume_driver: ${VOLUME_DRIVER}
+
+#OdooWebData:
+#  image: busybox
+#  labels:
+#    io.rancher.container.start_once: 'true'
+#  net: none
+#  entrypoint: /bin/true
+#  volumes:
+#    - /odoo/webdata:/var/lib/odoo
+#  volume_driver: ${VOLUME_DRIVER}
