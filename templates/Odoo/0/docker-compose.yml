@@ -5,9 +5,9 @@ odoo:
   links:
     - db
   volumes:
-    - /odoo/config:/etc/odoo
-    - /odoo/addons:/usr/lib/python3/dist-packages/odoo/addons
-    - /odoo/webdata:/var/lib/odoo
+    - odoo_webdata:/var/lib/odoo
+    - odoo_config:/etc/odoo
+    - odoo_addons:/mnt/extra-addons
     
 #  labels:
 #    io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
