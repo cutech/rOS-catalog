@@ -1,0 +1,24 @@
+.catalog:
+  name: "Odoo"
+  version: v0.1
+  description: "Odoo ERP"
+  uuid: odoo-0
+  questions:
+    - variable: PORT
+      description: "Odoo internal port"
+      label: "Odoo Port"
+      required: true
+      default: "8069"
+      type: "int"
+    - variable: PGUSER
+      description: "Postgres username"
+      label: "Postgres username"
+      required: true
+      default: "odoo"
+      type: "string"
+    - variable: PGPASS
+      description: "Database password"
+      label: "DB password"
+      required: true
+      default: "password"
+      type: "password"
