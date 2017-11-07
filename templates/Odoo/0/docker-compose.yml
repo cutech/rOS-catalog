@@ -68,7 +68,9 @@ odoo:
         >> /etc/odoo/$${ODOO_CONF_FILE}.conf \
         && chown odoo /etc/odoo/odoo.conf \
         && mkdir -p /mnt/extra-addons \
-        && chown -R odoo /mnt/extra-addons"]
+        && chown -R odoo /mnt/extra-addons \
+        && odoo \
+        && /bin/bash"]
   links:
     - db
 #  volumes:
