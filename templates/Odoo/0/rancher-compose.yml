@@ -73,7 +73,7 @@
       label: "Odoo Data"
       description: "Odoo data directory e.g. /var/lib/odoo"
       required: true
-      default: "{; data_dir = /var/lib/odoo"
+      default: "; data_dir = /var/lib/odoo"
       type: "string"
     - variable: "ADMIN_PASSWORD"
       label: "Admin Password"
