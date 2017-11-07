@@ -14,14 +14,14 @@
         - 10.0
         - 11.0
         - latest
-      default: 11.0
+      default: "11.0"
     - variable: "ODOO_RELEASE"
       label: "Odoo Release"
-      description: "Odoo release version; "latest" or date YYYYMMDD e.g. "20171107" "
+      description: "Odoo release version latest or date YYYYMMDD e.g. 20171107"
       required: true
       type: "string"
       default: "latest"
-    - variable: "XXPORT"
+    - variable: XXPORT
       description: "Odoo UI (xmlrpc) port; External"
       label: "Ext. Odoo Port"
       required: true
@@ -83,31 +83,31 @@
       type: "password"
     - variable: "CSV_SEP"
       label: "CSV Seperator"
-      description: "Comma seperated value file, internal seperator e.g. ",""
+      description: "Comma seperated value file, internal seperator e.g. ,"
       required: true
       default: "; csv_internal_sep = ,"
       type: "string"
     - variable: "DB_MAXCONN"
       label: "DB Max Connections"
-      description: "Maximum number of concurrent database connections e.g "64""
+      description: "Maximum number of concurrent database connections e.g 64"
       required: true
       default: "; db_maxconn = 64"
       type: "string"
     - variable: "DB_NAME"
       label: "DB Name"
-      description: "Name of database to pre-load e.g. "odoo""
+      description: "Name of database to pre-load e.g. odoo"
       required: true
       default: "; db_name = False"
       type: "string"
     - variable: "DB_TEMPLATE"
       label: "DB Template"
-      description: "Database default template e.g. "template1""
+      description: "Database default template e.g. template1"
       required: true
       default: "; db_template = template1"
       type: "string"
     - variable: "DB_FILTER"
       label: "DB Filter"
-      description: "Databse subdomain filter for multiple accounts e.g. "^%d$""
+      description: "Databse subdomain filter for multiple accounts e.g. ^%d$"
       required: true
       default: "; dbfilter = .*"
       type: "string"
