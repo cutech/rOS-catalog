@@ -32,6 +32,8 @@ odoo:
         $${ODOO_DATA_DIR}\n\
         admin_passwd = $${ADMIN_PASSWORD}\n\
         $${CSV_SEP}\n\
+        $${DB_HOST}\n\
+        $${DB_PORT}\n\
         $${DB_MAXCONN}\n\
         $${DB_NAME}\n\
         $${DB_TEMPLATE}\n\
