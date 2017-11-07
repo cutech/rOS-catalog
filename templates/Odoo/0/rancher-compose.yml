@@ -87,6 +87,18 @@
       required: true
       default: "; csv_internal_sep = ,"
       type: "string"
+      - variable: "DB_HOST"
+      label: "DB Host"
+      description: "Database Host in docker e.g. db"
+      required: true
+      default: "db_host = db"
+      type: "string"
+      - variable: "DB_PORT"
+      label: "DB Port"
+      description: "Database port e.g. 5432"
+      required: true
+      default: "db_port = 5432"
+      type: "string"
     - variable: "DB_MAXCONN"
       label: "DB Max Connections"
       description: "Maximum number of concurrent database connections e.g 64"
