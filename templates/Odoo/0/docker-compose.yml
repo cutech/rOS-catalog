@@ -66,8 +66,8 @@ odoo:
         ${XMLRPC_PORT}
         ${XMLRPCS}
         ${XMLRPCS_IP}
-        ${XMLRPCS_PORT} \
-        EOF
+        ${XMLRPCS_PORT}
+        EOF \
         && chown odoo /etc/odoo/odoo.conf \
         && mkdir -p /mnt/extra-addons \
         && chown -R odoo /mnt/extra-addons"]
