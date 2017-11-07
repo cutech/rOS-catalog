@@ -74,9 +74,9 @@ odoo:
   links:
     - db
 #  volumes:
-#    - $${ODOO_CONFIG}/etc/odoo
-#    - $${ODOO_ADDONS}/usr/lib/python3/dist-packages/odoo/addons
-#    - $${ODOO_WEB_DATA}/var/lib/odoo
+#    - ${ODOO_CONFIG}/etc/odoo
+#    - ${ODOO_ADDONS}/usr/lib/python3/dist-packages/odoo/addons
+#    - ${ODOO_WEB_DATA}/var/lib/odoo
     
   labels:
     io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
@@ -88,8 +88,8 @@ odoo:
 db:
   image: postgres:9.6
   environment:
-    - POSTGRES_USER=$${PGUSER}
-    - POSTGRES_PASSWORD=$${PGPASS}
+    - POSTGRES_USER=${PGUSER}
+    - POSTGRES_PASSWORD=${PGPASS}
   volumes:
     - odoo_db:/var/lib/postgresql/data
 
@@ -100,8 +100,8 @@ OdooConfig:
   net: none
   entrypoint: /bin/true
   volumes:
-    - $${ODOO_CONFIG_VOL}/etc/odoo
-  volume_driver: $${VOLUME_DRIVER}
+    - ${ODOO_CONFIG_VOL}/etc/odoo
+  volume_driver: ${VOLUME_DRIVER}
 
 OdooAddons:
   image: busybox
@@ -110,8 +110,8 @@ OdooAddons:
   net: none
   entrypoint: /bin/true
   volumes:
-    - $${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
-  volume_driver: $${VOLUME_DRIVER}
+    - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
+  volume_driver: ${VOLUME_DRIVER}
 
 OdooWebData:
   image: busybox
@@ -120,5 +120,5 @@ OdooWebData:
   net: none
   entrypoint: /bin/true
   volumes:
-    - $${ODOO_WEB_DATA_VOL}/var/lib/odoo
-  volume_driver: $${VOLUME_DRIVER}
+    - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
+  volume_driver: ${VOLUME_DRIVER}
