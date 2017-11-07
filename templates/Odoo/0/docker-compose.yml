@@ -21,52 +21,52 @@ odoo:
         && cp wkhtmltox/lib/* /usr/local/lib/ \
         && cp wkhtmltox/bin/* /usr/local/bin/ \
         && cp -r wkhtmltox/share/man/man1 /usr/local/share/man/
-        && curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
+        && curl -o odoo.deb -SL http://nightly.odoo.com/$${ODOO_VERSION}/nightly/deb/odoo_$${ODOO_VERSION}.$${ODOO_RELEASE}_all.deb \
         && echo '63d3fd997c850b657b93fb9351624d88d45d1682 odoo.deb' | sha1sum -c - \
         && dpkg --force-depends -i odoo.deb \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb \
         && pip3 install num2words \
-        && cat <<\\EOF >>/etc/odoo/${ODOO_CONF_FILE}.conf \
+        && cat <<\\EOF >>/etc/odoo/$${ODOO_CONF_FILE}.conf \
         [options]
-        ${ADDONS_PATH}
-        ${ODOO_DATA_DIR}
-        admin_passwd = ${ADMIN_PASSWORD}
-        ${CSV_SEP}
-        ${DB_MAXCONN}
-        ${DB_NAME}
-        ${DB_TEMPLATE}
-        ${DB_FILTER}
-        ${DEBUG_MODE}
-        ${EMAIL_FROM}
-        ${MEM_LIMIT_H}
-        ${MEM_LIMIT_S}
-        ${LIMIT_REQ}
-        ${LIMIT_TIME_CPU]
-        ${LIMIT_TIME_REAL}
-        list_db = ${True}
-        ${LOG_DB}
-        ${LOG_HANDLER}
-        ${LOG_LEVEL}
-        ${LOGFILE}
-        longpolling_port = ${ILPPORT}
-        ${CHRON_THREADS}
-        ${OSV_MEM_AGE}
-        ${OSV_MEM_COUNT}
-        ${PROXY_MODE}
-        ${SMTP_PASSWORD}
-        ${SMTP_PORT}
-        ${SMTP_SERVER}
-        ${SMTP_SSL}
-        ${SMTP_USER}
-        ${WORKERS}
-        ${XMLRPC}
-        ${XMLRPC_IP}
-        ${XMLRPC_PORT}
-        ${XMLRPCS}
-        ${XMLRPCS_IP}
-        ${XMLRPCS_PORT}
+        $${ADDONS_PATH}
+        $${ODOO_DATA_DIR}
+        admin_passwd = $${ADMIN_PASSWORD}
+        $${CSV_SEP}
+        $${DB_MAXCONN}
+        $${DB_NAME}
+        $${DB_TEMPLATE}
+        $${DB_FILTER}
+        $${DEBUG_MODE}
+        $${EMAIL_FROM}
+        $${MEM_LIMIT_H}
+        $${MEM_LIMIT_S}
+        $${LIMIT_REQ}
+        $${LIMIT_TIME_CPU]
+        $${LIMIT_TIME_REAL}
+        list_db = $${True}
+        $${LOG_DB}
+        $${LOG_HANDLER}
+        $${LOG_LEVEL}
+        $${LOGFILE}
+        longpolling_port = $${ILPPORT}
+        $${CHRON_THREADS}
+        $${OSV_MEM_AGE}
+        $${OSV_MEM_COUNT}
+        $${PROXY_MODE}
+        $${SMTP_PASSWORD}
+        $${SMTP_PORT}
+        $${SMTP_SERVER}
+        $${SMTP_SSL}
+        $${SMTP_USER}
+        $${WORKERS}
+        $${XMLRPC}
+        $${XMLRPC_IP}
+        $${XMLRPC_PORT}
+        $${XMLRPCS}
+        $${XMLRPCS_IP}
+        $${XMLRPCS_PORT}
         EOF
         && chown odoo /etc/odoo/odoo.conf \
         && mkdir -p /mnt/extra-addons \
@@ -74,9 +74,9 @@ odoo:
   links:
     - db
 #  volumes:
-#    - ${ODOO_CONFIG}/etc/odoo
-#    - ${ODOO_ADDONS}/usr/lib/python3/dist-packages/odoo/addons
-#    - ${ODOO_WEB_DATA}/var/lib/odoo
+#    - $${ODOO_CONFIG}/etc/odoo
+#    - $${ODOO_ADDONS}/usr/lib/python3/dist-packages/odoo/addons
+#    - $${ODOO_WEB_DATA}/var/lib/odoo
     
   labels:
     io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
@@ -88,8 +88,8 @@ odoo:
 db:
   image: postgres:9.6
   environment:
-    - POSTGRES_USER=${PGUSER}
-    - POSTGRES_PASSWORD=${PGPASS}
+    - POSTGRES_USER=$${PGUSER}
+    - POSTGRES_PASSWORD=$${PGPASS}
   volumes:
     - odoo_db:/var/lib/postgresql/data
 
@@ -100,8 +100,8 @@ OdooConfig:
   net: none
   entrypoint: /bin/true
   volumes:
-    - ${ODOO_CONFIG_VOL}/etc/odoo
-  volume_driver: ${VOLUME_DRIVER}
+    - $${ODOO_CONFIG_VOL}/etc/odoo
+  volume_driver: $${VOLUME_DRIVER}
 
 OdooAddons:
   image: busybox
@@ -110,8 +110,8 @@ OdooAddons:
   net: none
   entrypoint: /bin/true
   volumes:
-    - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
-  volume_driver: ${VOLUME_DRIVER}
+    - $${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
+  volume_driver: $${VOLUME_DRIVER}
 
 OdooWebData:
   image: busybox
@@ -120,5 +120,5 @@ OdooWebData:
   net: none
   entrypoint: /bin/true
   volumes:
-    - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
-  volume_driver: ${VOLUME_DRIVER}
+    - $${ODOO_WEB_DATA_VOL}/var/lib/odoo
+  volume_driver: $${VOLUME_DRIVER}
