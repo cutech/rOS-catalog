@@ -10,10 +10,10 @@
       required: true
       type: "enum"
       options:
-        - 9.0
-        - 10.0
-        - 11.0
-        - latest
+        - "9.0"
+        - "10.0"
+        - "11.0"
+        - "latest"
       default: "11.0"
     - variable: "ODOO_RELEASE"
       label: "Odoo Release"
