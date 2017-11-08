@@ -40,7 +40,7 @@ services:
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
       && cat >> /etc/odoo/${ODOO_CONF_FILE}.conf << EOF
-      echo ${ODOO_CONF_FILE}'[options]\n\
+      [options]
       ${ADDONS_PATH}
       ${ODOO_DATA_DIR}
       admin_passwd = ${ADMIN_PASSWORD}
