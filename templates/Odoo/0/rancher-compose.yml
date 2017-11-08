@@ -317,13 +317,13 @@
       default: "/odoo/webdata:"
       description: "Host directory or Convoy volume name for /var/lib/odoo, followed by a colon (':'). E.g.: '/odoo/webdata:'; 'odoo-config:'"
       type: "string"
-    - variable: PGUSER
+    - variable: USER
       description: "Postgres username"
       label: "Postgres username"
       required: true
       default: "odoo"
       type: "string"
-    - variable: PGPASS
+    - variable: PASS
       description: "Database password"
       label: "DB password"
       required: true
