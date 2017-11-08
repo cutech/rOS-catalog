@@ -3,8 +3,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=${PGUSER}
-      - POSTGRES_PASSWORD=${PGPASS}
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
     ports:
       - "5432:5432"
     expose:
@@ -13,7 +13,7 @@ services:
       - odoo_db:/var/lib/postgresql/data
   odoo:
     build:
-      context: https://raw.githubusercontent.com/cutech/docker-odoo-11/master/Dockerfile
+      context: ${BUILD_CONTEXT}
     environment:
       - ADDONS_PATH : ${ADDONS_PATH}
       - ODOO_DATA_DIR : ${ODOO_DATA_DIR}
@@ -21,6 +21,8 @@ services:
       - CSV_SEP : ${CSV_SEP}
       - HOST : ${HOST}
       - PORT : ${PORT}
+      - USER : ${USER}
+      - PASSWORD : ${PASSWORD}
       - DB_MAXCONN : ${DB_MAXCONN}
       - DB_NAME : ${DB_NAME}
       - DB_TEMPLATE : ${DB_TEMPLATE}
