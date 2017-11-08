@@ -1,6 +1,6 @@
 .catalog:
   name: "Odoo"
-  version: v0.2
+  version: v0.3
   description: "Odoo ERP"
   uuid: odoo-0
   questions:
