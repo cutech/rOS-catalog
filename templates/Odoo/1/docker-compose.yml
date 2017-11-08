@@ -34,7 +34,6 @@ services:
       - LIMIT_REQ : ${LIMIT_REQ}
       - LIMIT_TIME_CPU : ${LIMIT_TIME_CPU]
       - LIMIT_TIME_REAL : ${LIMIT_TIME_REAL}
-      - True : ${True}
       - LOG_DB : ${LOG_DB}
       - LOG_HANDLER : ${LOG_HANDLER}
       - LOG_LEVEL : ${LOG_LEVEL}
