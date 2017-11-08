@@ -16,7 +16,7 @@ services:
       && touch /etc/odoo/${ODOO_CONF_FILE}.conf \
       && cat <<'EOF' >> /etc/odoo/${ODOO_CONF_FILE}.conf
         [options]\n '${DB_HOST}'\n '${DB_PORT}'\n
-        EOF \"]
+        EOF"]
     links:
       - db
   
