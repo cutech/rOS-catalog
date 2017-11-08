@@ -91,7 +91,7 @@
       label: "DB Host"
       description: "Database Host in docker e.g. db"
       required: true
-      default: "db_host = db"
+      default: "db_host = 'db'"
       type: "string"
     - variable: "DB_PORT"
       label: "DB Port"
