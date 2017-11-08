@@ -1,0 +1,13 @@
+odoo:
+  image: cutech/docker-odoo
+  ports:
+    - ${XXPORT}:${IXPORT}
+    - ${XXSPORT}:${IXSPORT}
+    - ${XLPPORT}:${ILPPORT}
+  links:
+    - db
+db:
+  image: postgres
+  environment:
+    - POSTGRES_USER=${PGUSER}
+    - POSTGRES_PASSWORD=${PGPASS}
