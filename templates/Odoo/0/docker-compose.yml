@@ -44,8 +44,7 @@ services:
       && chown odoo /etc/odoo/${ODOO_CONF_FILE} \
       && mkdir -p /mnt/extra-addons \
       && chown -R odoo /mnt/extra-addons \
-      && odoo \
-      && /bin/bash"]
+      && odoo"]
     labels:
       io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
     volumes_from:
