@@ -4,7 +4,7 @@
   description: "Odoo ERP"
   uuid: odoo-0
   questions:
-     - variable: "BUILD_CONTEXT"
+    - variable: "BUILD_CONTEXT"
       label: "Build Context"
       description: "Docker compose build context URL repository or directory"
       required: true
