@@ -74,7 +74,7 @@ odoo:
         && odoo \
         && /bin/bash"]
   links:
-    - db
+    - db:postgres
 #  volumes:
 #    - ${ODOO_CONFIG}/etc/odoo
 #    - ${ODOO_ADDONS}/usr/lib/python3/dist-packages/odoo/addons
