@@ -40,7 +40,7 @@ services:
       && apt-get -y install -f --no-install-recommends \
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
-      && cat << '${DB_HOST}'\n '${DB_PORT}'\n >> /etc/odoo/${ODOO_CONF_FILE} \
+      && cat << '${ADDONS_PATH}'\n '${ODOO_DATA_DIR}'\n admin_passwd = '${ADMIN_PASSWORD}'\n '${CSV_SEP}'\n '${DB_HOST}'\n '${DB_PORT}'\n >> /etc/odoo/${ODOO_CONF_FILE} \
       && chown odoo /etc/odoo/${ODOO_CONF_FILE} \
       && mkdir -p /mnt/extra-addons \
       && chown -R odoo /mnt/extra-addons \
