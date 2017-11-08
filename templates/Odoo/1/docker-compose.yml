@@ -15,46 +15,46 @@ services:
     build:
       context: ${BUILD_CONTEXT}
     environment:
-      - ADDONS_PATH : "${ADDONS_PATH}"
-      - ODOO_DATA_DIR : "${ODOO_DATA_DIR}"
-      - ADMIN_PASSWORD : "${ADMIN_PASSWORD}"
-      - CSV_SEP : "${CSV_SEP}"
-      - HOST : "${HOST}"
-      - PORT : "${PORT}"
-      - USER : "${USER}"
-      - PASSWORD : "${PASSWORD}"
-      - DB_MAXCONN : "${DB_MAXCONN}"
-      - DB_NAME : "${DB_NAME}"
-      - DB_TEMPLATE : "${DB_TEMPLATE}"
-      - DB_FILTER : "${DB_FILTER}"
-      - DEBUG_MODE : "${DEBUG_MODE}"
-      - EMAIL_FROM : "${EMAIL_FROM}"
-      - MEM_LIMIT_H : "${MEM_LIMIT_H}"
-      - MEM_LIMIT_S : "${MEM_LIMIT_S}"
-      - LIMIT_REQ : "${LIMIT_REQ}"
-      - LIMIT_TIME_CPU : "${LIMIT_TIME_CPU}"
-      - LIMIT_TIME_REAL : "${LIMIT_TIME_REAL}"
-      - LOG_DB : "${LOG_DB}"
-      - LOG_HANDLER : "${LOG_HANDLER}"
-      - LOG_LEVEL : "${LOG_LEVEL}"
-      - LOGFILE : "${LOGFILE}"
-      - ILPPORT : "${ILPPORT}"
-      - CHRON_THREADS : "${CHRON_THREADS}"
-      - OSV_MEM_AGE : "${OSV_MEM_AGE}"
-      - OSV_MEM_COUNT : "${OSV_MEM_COUNT}"
-      - PROXY_MODE : "${PROXY_MODE}"
-      - SMTP_PASSWORD : "${SMTP_PASSWORD}"
-      - SMTP_PORT : "${SMTP_PORT}"
-      - SMTP_SERVER : "${SMTP_SERVER}"
-      - SMTP_SSL : "${SMTP_SSL}"
-      - SMTP_USER : "${SMTP_USER}"
-      - WORKERS : "${WORKERS}"
-      - XMLRPC : "${XMLRPC}"
-      - XMLRPC_IP : "${XMLRPC_IP}"
-      - XMLRPC_PORT : "${XMLRPC_PORT}"
-      - XMLRPCS : "${XMLRPCS}"
-      - XMLRPCS_IP : "${XMLRPCS_IP}"
-      - XMLRPCS_PORT : "${XMLRPCS_PORT}"
+      - ADDONS_PATH=${ADDONS_PATH}
+      - ODOO_DATA_DIR=${ODOO_DATA_DIR}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - CSV_SEP=${CSV_SEP}
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - DB_MAXCONN=${DB_MAXCONN}
+      - DB_NAME=${DB_NAME}
+      - DB_TEMPLATE=${DB_TEMPLATE}
+      - DB_FILTER=${DB_FILTER}
+      - DEBUG_MODE=${DEBUG_MODE}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - MEM_LIMIT_H=${MEM_LIMIT_H}
+      - MEM_LIMIT_S=${MEM_LIMIT_S}
+      - LIMIT_REQ=${LIMIT_REQ}
+      - LIMIT_TIME_CPU=${LIMIT_TIME_CPU}
+      - LIMIT_TIME_REAL=${LIMIT_TIME_REAL}
+      - LOG_DB=${LOG_DB}
+      - LOG_HANDLER=${LOG_HANDLER}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LOGFILE=${LOGFILE}
+      - ILPPORT=${ILPPORT}
+      - CHRON_THREADS=${CHRON_THREADS}
+      - OSV_MEM_AGE=${OSV_MEM_AGE}
+      - OSV_MEM_COUNT=${OSV_MEM_COUNT}
+      - PROXY_MODE=${PROXY_MODE}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_SSL=${SMTP_SSL}
+      - SMTP_USER=${SMTP_USER}
+      - WORKERS=${WORKERS}
+      - XMLRPC=${XMLRPC}
+      - XMLRPC_IP=${XMLRPC_IP}
+      - XMLRPC_PORT=${XMLRPC_PORT}
+      - XMLRPCS=${XMLRPCS}
+      - XMLRPCS_IP=${XMLRPCS_IP}
+      - XMLRPCS_PORT=${XMLRPCS_PORT}
     ports:
       - ${XXPORT}:${IXPORT}
       - ${XXSPORT}:${IXSPORT}
