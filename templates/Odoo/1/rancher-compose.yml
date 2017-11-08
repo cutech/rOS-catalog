@@ -4,6 +4,12 @@
   description: "Odoo ERP"
   uuid: odoo-0
   questions:
+     - variable: "BUILD_CONTEXT"
+      label: "Build Context"
+      description: "Docker compose build context URL repository or directory"
+      required: true
+      type: "string"
+      default: "https://raw.githubusercontent.com/cutech/docker-odoo-11/master/Dockerfile"
     - variable: "ODOO_VERSION"
       label: "Odoo Version"
       description: "Odoo Version 9.0, 10.0, 11.0, Latest (11.0)"
