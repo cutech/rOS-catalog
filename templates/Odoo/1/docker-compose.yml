@@ -1,5 +1,5 @@
 odoo:
-  image: cutech/docker-odoo
+  image: cutech/docker-odoo-11
   ports:
     - ${XXPORT}:${IXPORT}
     - ${XXSPORT}:${IXSPORT}
