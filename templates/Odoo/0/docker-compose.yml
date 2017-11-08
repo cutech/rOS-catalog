@@ -2,8 +2,8 @@ services:
   db:
     image: postgres:9.6
     environment:
-      - POSTGRES_USER='${PGUSER}'
-      - POSTGRES_PASSWORD='${PGPASS}'
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASS}
     ports:
       - "5432:5432"
     expose:
@@ -13,9 +13,9 @@ services:
   odoo:
     image: debian:stretch
     ports:
-      - '${XXPORT}:${IXPORT}'
-      - '${XXSPORT}:${IXSPORT}'
-      - '${XLPPORT}:${ILPPORT}'
+      - ${XXPORT}:${IXPORT}
+      - ${XXSPORT}:${IXSPORT}
+      - ${XLPPORT}:${ILPPORT}
     command: [/bin/bash, -c, "set -x; \
       apt-get update \
       && apt-get install -y --no-install-recommends \
@@ -33,53 +33,53 @@ services:
       && cp wkhtmltox/lib/* /usr/local/lib/ \
       && cp wkhtmltox/bin/* /usr/local/bin/ \
       && cp -r wkhtmltox/share/man/man1 /usr/local/share/man/
-      && curl -o odoo.deb -SL http://nightly.odoo.com/'${ODOO_VERSION}'/nightly/deb/odoo_'${ODOO_VERSION}'.'${ODOO_RELEASE}'_all.deb \
+      && curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
       && dpkg --force-depends -i odoo.deb \
       && apt-get update \
       && apt-get -y install -f --no-install-recommends \
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
-      && echo '${ODOO_CONF_FILE}''[options]\n\
-      '${ADDONS_PATH}'\n\
-      '${ODOO_DATA_DIR}'\n\
-      admin_passwd = '${ADMIN_PASSWORD}'\n\
-      '${CSV_SEP}'\n\
-      '${DB_HOST}'\n\
-      '${DB_PORT}'\n\
-      '${DB_MAXCONN}'\n\
-      '${DB_NAME}'\n\
-      '${DB_TEMPLATE}'\n\
-      '${DB_FILTER}'\n\
-      '${DEBUG_MODE}'\n\
-      '${EMAIL_FROM}'\n\
-      '${MEM_LIMIT_H}'\n\
-      '${MEM_LIMIT_S}'\n\
-      '${LIMIT_REQ}'\n\
-      '${LIMIT_TIME_CPU]\n\
-      '${LIMIT_TIME_REAL}'\n\
-      list_db = '${True}'\n\
-      '${LOG_DB}'\n\
-      '${LOG_HANDLER}'\n\
-      '${LOG_LEVEL}'\n\
-      '${LOGFILE}'\n\
-      longpolling_port = '${ILPPORT}'\n\
-      '${CHRON_THREADS}'\n\
-      '${OSV_MEM_AGE}'\n\
-      '${OSV_MEM_COUNT}'\n\
-      '${PROXY_MODE}'\n\
-      '${SMTP_PASSWORD}'\n\
-      '${SMTP_PORT}'\n\
-      '${SMTP_SERVER}'\n\
-      '${SMTP_SSL}'\n\
-      '${SMTP_USER}'\n\
-      '${WORKERS}'\n\
-      '${XMLRPC}'\n\
-      '${XMLRPC_IP}'\n\
-      '${XMLRPC_PORT}'\n\
-      '${XMLRPCS}'\n\
-      '${XMLRPCS_IP}'\n\
-      '${XMLRPCS_PORT}'\n'\
-      >> /etc/odoo/'${ODOO_CONF_FILE}'.conf \
+      && echo ${ODOO_CONF_FILE}'[options]\n\
+      ${ADDONS_PATH}\n\
+      ${ODOO_DATA_DIR}\n\
+      admin_passwd = ${ADMIN_PASSWORD}\n\
+      ${CSV_SEP}\n\
+      ${DB_HOST}\n\
+      ${DB_PORT}\n\
+      ${DB_MAXCONN}\n\
+      ${DB_NAME}\n\
+      ${DB_TEMPLATE}\n\
+      ${DB_FILTER}\n\
+      ${DEBUG_MODE}\n\
+      ${EMAIL_FROM}\n\
+      ${MEM_LIMIT_H}\n\
+      ${MEM_LIMIT_S}\n\
+      ${LIMIT_REQ}\n\
+      ${LIMIT_TIME_CPU]\n\
+      ${LIMIT_TIME_REAL}\n\
+      list_db = ${True}\n\
+      ${LOG_DB}\n\
+      ${LOG_HANDLER}\n\
+      ${LOG_LEVEL}\n\
+      ${LOGFILE}\n\
+      longpolling_port = ${ILPPORT}\n\
+      ${CHRON_THREADS}\n\
+      ${OSV_MEM_AGE}\n\
+      ${OSV_MEM_COUNT}\n\
+      ${PROXY_MODE}\n\
+      ${SMTP_PASSWORD}\n\
+      ${SMTP_PORT}\n\
+      ${SMTP_SERVER}\n\
+      ${SMTP_SSL}\n\
+      ${SMTP_USER}\n\
+      ${WORKERS}\n\
+      ${XMLRPC}\n\
+      ${XMLRPC_IP}\n\
+      ${XMLRPC_PORT}\n\
+      ${XMLRPCS}\n\
+      ${XMLRPCS_IP}\n\
+      ${XMLRPCS_PORT}\n'\
+      >> /etc/odoo/${ODOO_CONF_FILE}.conf \
       && chown odoo /etc/odoo/odoo.conf \
       && mkdir -p /mnt/extra-addons \
       && chown -R odoo /mnt/extra-addons \
@@ -98,7 +98,7 @@ services:
     entrypoint: /bin/true
     volumes:
       - ${ODOO_CONFIG_VOL}/etc/odoo
-    volume_driver: '${VOLUME_DRIVER}'
+    volume_driver: ${VOLUME_DRIVER}
   OdooAddons:
     image: busybox
     labels:
@@ -106,7 +106,7 @@ services:
     entrypoint: /bin/true
     volumes:
       - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
-    volume_driver: '${VOLUME_DRIVER}'
+    volume_driver: ${VOLUME_DRIVER}
   OdooWebData:
     image: busybox
     labels:
@@ -114,4 +114,4 @@ services:
     entrypoint: /bin/true
     volumes:
       - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
-    volume_driver: '${VOLUME_DRIVER}'
+    volume_driver: ${VOLUME_DRIVER}
