@@ -40,7 +40,7 @@ services:
       && apt-get -y install -f --no-install-recommends \
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
-      && cat >> /etc/odoo/${ODOO_CONF_FILE}.conf << EOF
+      && cat << EOF >> /etc/odoo/${ODOO_CONF_FILE}.conf
       [options]
       '${DB_HOST}'
       '${DB_PORT}'
