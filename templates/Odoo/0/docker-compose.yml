@@ -94,7 +94,6 @@ services:
     image: busybox
     labels:
       io.rancher.container.start_once: 'true'
-    net: none
     entrypoint: /bin/true
     volumes:
       - ${ODOO_CONFIG_VOL}/etc/odoo
@@ -103,7 +102,6 @@ services:
     image: busybox
     labels:
       io.rancher.container.start_once: 'true'
-    net: none
     entrypoint: /bin/true
     volumes:
       - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
@@ -112,7 +110,6 @@ services:
     image: busybox
     labels:
       io.rancher.container.start_once: 'true'
-    net: none
     entrypoint: /bin/true
     volumes:
       - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
