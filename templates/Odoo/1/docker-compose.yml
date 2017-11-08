@@ -1,19 +1,22 @@
-odoo:
-  image: debian:stretch
-  ports:
-    - ${XXPORT}:${IXPORT}
-    - ${XXSPORT}:${IXSPORT}
-    - ${XLPPORT}:${ILPPORT}
-  command: [/bin/bash, -c, "set -x; \
-    mkdir /etc/odoo \
-    && touch /etc/odoo/${ODOO_CONF_FILE}.conf \
-    && cat >> /etc/odoo/${ODOO_CONF_FILE}.conf << EOF \
-      [options]\n '${DB_HOST}'\n '${DB_PORT}'\n
-      EOF
-  links:
-    - db
-db:
-  image: postgres
-  environment:
-    - POSTGRES_USER=${PGUSER}
-    - POSTGRES_PASSWORD=${PGPASS}
+version: "2"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASS}
+  odoo:
+    image: debian:stretch
+    ports:
+      - ${XXPORT}:${IXPORT}
+      - ${XXSPORT}:${IXSPORT}
+      - ${XLPPORT}:${ILPPORT}
+    command: [/bin/bash, -c, "set -x; \
+      mkdir /etc/odoo \
+      && touch /etc/odoo/${ODOO_CONF_FILE}.conf \
+      && cat >> /etc/odoo/${ODOO_CONF_FILE}.conf << EOF \
+        [options]\n '${DB_HOST}'\n '${DB_PORT}'\n
+        EOF"]
+    links:
+      - db
+  
