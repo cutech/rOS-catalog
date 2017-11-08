@@ -14,7 +14,7 @@ services:
     command: [/bin/bash, -c, "set -x; \
       mkdir /etc/odoo \
       && touch /etc/odoo/${ODOO_CONF_FILE}.conf \
-      && cat >> /etc/odoo/${ODOO_CONF_FILE}.conf << EOF \
+      && cat <<EOF >> /etc/odoo/${ODOO_CONF_FILE}.conf 
         [options]\n '${DB_HOST}'\n '${DB_PORT}'\n
         EOF"]
     links:
