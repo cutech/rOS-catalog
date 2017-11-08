@@ -92,6 +92,8 @@ db:
   environment:
     - POSTGRES_USER=${PGUSER}
     - POSTGRES_PASSWORD=${PGPASS}
+  ports:
+    - 5432:5432
   volumes:
     - odoo_db:/var/lib/postgresql/data
 
