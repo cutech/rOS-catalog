@@ -40,45 +40,45 @@ services:
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
       && echo ${ODOO_CONF_FILE}'[options]\n\
-      ${ADDONS_PATH}\n\
-      ${ODOO_DATA_DIR}\n\
-      admin_passwd = ${ADMIN_PASSWORD}\n\
-      ${CSV_SEP}\n\
-      ${DB_HOST}\n\
-      ${DB_PORT}\n\
-      ${DB_MAXCONN}\n\
-      ${DB_NAME}\n\
-      ${DB_TEMPLATE}\n\
-      ${DB_FILTER}\n\
-      ${DEBUG_MODE}\n\
-      ${EMAIL_FROM}\n\
-      ${MEM_LIMIT_H}\n\
-      ${MEM_LIMIT_S}\n\
-      ${LIMIT_REQ}\n\
-      ${LIMIT_TIME_CPU]\n\
-      ${LIMIT_TIME_REAL}\n\
-      list_db = ${True}\n\
-      ${LOG_DB}\n\
-      ${LOG_HANDLER}\n\
-      ${LOG_LEVEL}\n\
-      ${LOGFILE}\n\
-      longpolling_port = ${ILPPORT}\n\
-      ${CHRON_THREADS}\n\
-      ${OSV_MEM_AGE}\n\
-      ${OSV_MEM_COUNT}\n\
-      ${PROXY_MODE}\n\
-      ${SMTP_PASSWORD}\n\
-      ${SMTP_PORT}\n\
-      ${SMTP_SERVER}\n\
-      ${SMTP_SSL}\n\
-      ${SMTP_USER}\n\
-      ${WORKERS}\n\
-      ${XMLRPC}\n\
-      ${XMLRPC_IP}\n\
-      ${XMLRPC_PORT}\n\
-      ${XMLRPCS}\n\
-      ${XMLRPCS_IP}\n\
-      ${XMLRPCS_PORT}\n'\
+      \${ADDONS_PATH}\n\
+      \${ODOO_DATA_DIR}\n\
+      admin_passwd = \${ADMIN_PASSWORD}\n\
+      \${CSV_SEP}\n\
+      \${DB_HOST}\n\
+      \${DB_PORT}\n\
+      \${DB_MAXCONN}\n\
+      \${DB_NAME}\n\
+      \${DB_TEMPLATE}\n\
+      \${DB_FILTER}\n\
+      \${DEBUG_MODE}\n\
+      \${EMAIL_FROM}\n\
+      \${MEM_LIMIT_H}\n\
+      \${MEM_LIMIT_S}\n\
+      \${LIMIT_REQ}\n\
+      \${LIMIT_TIME_CPU]\n\
+      \${LIMIT_TIME_REAL}\n\
+      list_db = \${True}\n\
+      \${LOG_DB}\n\
+      \${LOG_HANDLER}\n\
+      \${LOG_LEVEL}\n\
+      \${LOGFILE}\n\
+      longpolling_port = \${ILPPORT}\n\
+      \${CHRON_THREADS}\n\
+      \${OSV_MEM_AGE}\n\
+      \${OSV_MEM_COUNT}\n\
+      \${PROXY_MODE}\n\
+      \${SMTP_PASSWORD}\n\
+      \${SMTP_PORT}\n\
+      \${SMTP_SERVER}\n\
+      \${SMTP_SSL}\n\
+      \${SMTP_USER}\n\
+      \${WORKERS}\n\
+      \${XMLRPC}\n\
+      \${XMLRPC_IP}\n\
+      \${XMLRPC_PORT}\n\
+      \${XMLRPCS}\n\
+      \${XMLRPCS_IP}\n\
+      \${XMLRPCS_PORT}\n'\
       >> /etc/odoo/${ODOO_CONF_FILE}.conf \
       && chown odoo /etc/odoo/odoo.conf \
       && mkdir -p /mnt/extra-addons \
