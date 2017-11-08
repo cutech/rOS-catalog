@@ -32,7 +32,7 @@ services:
       - MEM_LIMIT_H : ${MEM_LIMIT_H}
       - MEM_LIMIT_S : ${MEM_LIMIT_S}
       - LIMIT_REQ : ${LIMIT_REQ}
-      - LIMIT_TIME_CPU : ${LIMIT_TIME_CPU]
+      - LIMIT_TIME_CPU : ${LIMIT_TIME_CPU}
       - LIMIT_TIME_REAL : ${LIMIT_TIME_REAL}
       - LOG_DB : ${LOG_DB}
       - LOG_HANDLER : ${LOG_HANDLER}
