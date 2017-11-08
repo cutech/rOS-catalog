@@ -41,8 +41,8 @@ services:
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
       && echo $'[options]\n\    
-      '"${DB_HOST}"'\n\
-      '"${DB_PORT}"'\n\
+      '"${DB_HOST}'"\n\
+      '"${DB_PORT}'"\n\
       \n'\
       >> /etc/odoo/${ODOO_CONF_FILE}.conf \
       && chown odoo /etc/odoo/odoo.conf \
