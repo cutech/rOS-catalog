@@ -40,11 +40,11 @@ services:
       && apt-get -y install -f --no-install-recommends \
       && rm -rf /var/lib/apt/lists/* odoo.deb \
       && pip3 install num2words \
-      && cat << EOF >> /etc/odoo/${ODOO_CONF_FILE}.conf
-      [options]
-      '${DB_HOST}'
-      '${DB_PORT}'
-      EOF \
+      && echo $'[options]\n\    
+      '${DB_HOST}'\n\
+      '${DB_PORT}'\n\
+      \n'\
+      >> /etc/odoo/${ODOO_CONF_FILE}.conf \
       && chown odoo /etc/odoo/odoo.conf \
       && mkdir -p /mnt/extra-addons \
       && chown -R odoo /mnt/extra-addons \
