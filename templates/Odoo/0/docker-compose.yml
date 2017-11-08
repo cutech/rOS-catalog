@@ -1,5 +1,14 @@
 version: "2"
 services:
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASS}
+    ports:
+      - 5432:5432
+    volumes:
+      - odoo_db:/var/lib/postgresql/data
   odoo:
     image: debian:stretch
     ports:
@@ -81,39 +90,30 @@ services:
       - OdooConfig
       - OdooAddons
       - OdooWebData
-  db:
-    image: postgres:9.6
-    environment:
-      - POSTGRES_USER=${PGUSER}
-      - POSTGRES_PASSWORD=${PGPASS}
-    ports:
-      - 5432:5432
+  OdooConfig:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: 'true'
+    net: none
+    entrypoint: /bin/true
     volumes:
-      - odoo_db:/var/lib/postgresql/data
-OdooConfig:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - ${ODOO_CONFIG_VOL}/etc/odoo
-  volume_driver: ${VOLUME_DRIVER}
-OdooAddons:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
-  volume_driver: ${VOLUME_DRIVER}
-OdooWebData:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
-  volume_driver: ${VOLUME_DRIVER}
+      - ${ODOO_CONFIG_VOL}/etc/odoo
+    volume_driver: ${VOLUME_DRIVER}
+  OdooAddons:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: 'true'
+    net: none
+    entrypoint: /bin/true
+    volumes:
+      - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
+    volume_driver: ${VOLUME_DRIVER}
+  OdooWebData:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: 'true'
+    net: none
+    entrypoint: /bin/true
+    volumes:
+      - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
+    volume_driver: ${VOLUME_DRIVER}
