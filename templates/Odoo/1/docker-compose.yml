@@ -13,8 +13,8 @@ services:
       - ${XLPPORT}:${ILPPORT}
     command: [/bin/bash, -c, "set -x; \
       mkdir /etc/odoo \
-      && touch /etc/odoo/${ODOO_CONF_FILE}.conf \
-      && cat << '[options]'\n '${DB_HOST}'\n '${DB_PORT}'\n >> /etc/odoo/${ODOO_CONF_FILE}.conf \
+      && touch /etc/odoo/${ODOO_CONF_FILE} \
+      && cat << \[options\]'\n '${DB_HOST}'\n '${DB_PORT}'\n >> /etc/odoo/${ODOO_CONF_FILE} \
       /bin/bash"]
     links:
       - db
