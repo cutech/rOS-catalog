@@ -1,7 +1,9 @@
 odoo:
-  image: odoo
+  image: cutech/docker-odoo-11
   ports:
     - "8069:8069"
+    - "8071:8071"
+    - "8072:8072"
   links:
     - db
 db:
