@@ -320,6 +320,11 @@
       required: true
       default: "8071"
       type: "string"
+    - variable: "ODOO_DB_VOL"
+      label: "db"
+      description: "Host directory or Convoy volume name for postgresql/data, followed by a colon (':'). E.g.: '/odoo/db:'; 'odoo-db:'"
+      default: "/odoo/db:"
+      type: "string"
     - variable: "ODOO_CONFIG_VOL"
       label: "odoo.conf"
       description: "Host directory or Convoy volume name for /etc/odoo/odoo.conf, followed by a colon (':'). E.g.: '/odoo/config:'; 'odoo-config:'"
