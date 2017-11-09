@@ -93,18 +93,30 @@
       required: true
       default: ","
       type: "string"
-    - variable: "DB_HOST"
+    - variable: "HOST"
       label: "DB Host"
       description: "Database Host in docker e.g. db"
       required: true
       default: "db"
       type: "string"
-    - variable: "DB_PORT"
+    - variable: "PORT"
       label: "DB Port"
       description: "Database port e.g. 5432"
       required: true
       default: "5432"
       type: "string"
+    - variable: "USER"
+      label: "DB User"
+      description: "Database user name"
+      required: true
+      default: "odoo"
+      type: "string"
+    - variable: "PASSWORD"
+      label: "DB Password"
+      description: "Database password, default odoo"
+      required: true
+      default: "odoo"
+      type: "password"
     - variable: "DB_MAXCONN"
       label: "DB Max Connections"
       description: "Maximum number of concurrent database connections e.g 64"
