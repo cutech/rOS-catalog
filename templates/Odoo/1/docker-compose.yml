@@ -1,91 +1,349 @@
-version: "2"
-services:
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_USER=${USER}
-      - POSTGRES_PASSWORD=${PASSWORD}
-    ports:
-      - "5432:5432"
-    expose:
-      - "5432"
-    volumes:
-      - odoo_db:/var/lib/postgresql/data
-  odoo:
-    build:
-      context: ${BUILD_CONTEXT}
-    environment:
-      - ADDONS_PATH=${ADDONS_PATH}
-      - ODOO_DATA_DIR=${ODOO_DATA_DIR}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - CSV_SEP=${CSV_SEP}
-      - HOST=${HOST}
-      - PORT=${PORT}
-      - USER=${USER}
-      - PASSWORD=${PASSWORD}
-      - DB_MAXCONN=${DB_MAXCONN}
-      - DB_NAME=${DB_NAME}
-      - DB_TEMPLATE=${DB_TEMPLATE}
-      - DB_FILTER=${DB_FILTER}
-      - DEBUG_MODE=${DEBUG_MODE}
-      - EMAIL_FROM=${EMAIL_FROM}
-      - MEM_LIMIT_H=${MEM_LIMIT_H}
-      - MEM_LIMIT_S=${MEM_LIMIT_S}
-      - LIMIT_REQ=${LIMIT_REQ}
-      - LIMIT_TIME_CPU=${LIMIT_TIME_CPU}
-      - LIMIT_TIME_REAL=${LIMIT_TIME_REAL}
-      - LOG_DB=${LOG_DB}
-      - LOG_HANDLER=${LOG_HANDLER}
-      - LOG_LEVEL=${LOG_LEVEL}
-      - LOGFILE=${LOGFILE}
-      - ILPPORT=${ILPPORT}
-      - CHRON_THREADS=${CHRON_THREADS}
-      - OSV_MEM_AGE=${OSV_MEM_AGE}
-      - OSV_MEM_COUNT=${OSV_MEM_COUNT}
-      - PROXY_MODE=${PROXY_MODE}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_SERVER=${SMTP_SERVER}
-      - SMTP_SSL=${SMTP_SSL}
-      - SMTP_USER=${SMTP_USER}
-      - WORKERS=${WORKERS}
-      - XMLRPC=${XMLRPC}
-      - XMLRPC_IP=${XMLRPC_IP}
-      - XMLRPC_PORT=${XMLRPC_PORT}
-      - XMLRPCS=${XMLRPCS}
-      - XMLRPCS_IP=${XMLRPCS_IP}
-      - XMLRPCS_PORT=${XMLRPCS_PORT}
-    ports:
-      - ${XXPORT}:${IXPORT}
-      - ${XXSPORT}:${IXSPORT}
-      - ${XLPPORT}:${ILPPORT}
-    labels:
-      io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
-    volumes_from:
-      - OdooConfig
-      - OdooAddons
-      - OdooWebData
-  OdooConfig:
-    image: busybox
-    labels:
-      io.rancher.container.start_once: 'true'
-    entrypoint: /bin/true
-    volumes:
-      - ${ODOO_CONFIG_VOL}/etc/odoo
-    volume_driver: ${VOLUME_DRIVER}
-  OdooAddons:
-    image: busybox
-    labels:
-      io.rancher.container.start_once: 'true'
-    entrypoint: /bin/true
-    volumes:
-      - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
-    volume_driver: ${VOLUME_DRIVER}
-  OdooWebData:
-    image: busybox
-    labels:
-      io.rancher.container.start_once: 'true'
-    entrypoint: /bin/true
-    volumes:
-      - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
-    volume_driver: ${VOLUME_DRIVER}
+.catalog:
+  name: "Odoo"
+  version: v0.3
+  description: "Odoo ERP"
+  uuid: odoo-0
+  questions:
+    - variable: "IMAGE"
+      label: "Docker Image"
+      description: "Docker image"
+      required: true
+      type: "string"
+      default: "cutech/docker-odoo-11"
+    - variable: "ODOO_VERSION"
+      label: "Odoo Version"
+      description: "Odoo Version 9.0, 10.0, 11.0, Latest (11.0)"
+      required: true
+      type: "enum"
+      options:
+        - "9.0"
+        - "10.0"
+        - "11.0"
+        - "latest"
+      default: "11.0"
+    - variable: "ODOO_RELEASE"
+      label: "Odoo Release"
+      description: "Odoo release version latest or date YYYYMMDD e.g. 20171107"
+      required: true
+      type: "string"
+      default: "latest"
+    - variable: XXPORT
+      description: "Odoo UI (xmlrpc) port; External"
+      label: "Ext. Odoo Port"
+      required: true
+      default: "8069"
+      type: "int"
+    - variable: "IXPORT"
+      description: "Odoo UI (xmlrpc) port; Internal"
+      label: "Int. Odoo Port"
+      required: true
+      default: "8069"
+      type: "int"
+    - variable: "XXSPORT"
+      description: "Odoo Secure (xmlrpcs) port; External"
+      label: "Odoo Secure Port"
+      required: true
+      default: "8071"
+      type: "int"
+    - variable: "IXSPORT"
+      description: "Odoo Secure (xmlrpcs) port; Internal"
+      label: "Odoo Secure Port"
+      required: true
+      default: "8071"
+      type: "int"
+    - variable: "XLPPORT"
+      description: "Odoo Longpolling port; External"
+      label: "Longpoll Port"
+      required: true
+      default: "8072"
+      type: "int"
+    - variable: "ILPPORT"
+      description: "Odoo Longpolling port; Internal"
+      label: "Longpoll Port"
+      required: true
+      default: "8072"
+      type: "int"
+    - variable: "ODOO_CONF_FILE"
+      label: "Config File"
+      description: "Odoo COnfig file name e.g. odoo.conf"
+      required: true
+      default: "odoo.conf"
+      type: "string"
+    - variable: "ADDONS_PATH"
+      label: "Odoo addons"
+      description: "Odoo addons path e.g. /mnt/extra-addons"
+      required: true
+      default: "/mnt/extra-addons"
+      type: "string"
+    - variable: "ODOO_DATA_DIR"
+      label: "Odoo Data"
+      description: "Odoo data directory e.g. /var/lib/odoo"
+      required: true
+      default: "/var/lib/odoo"
+      type: "string"
+    - variable: "ADMIN_PASSWORD"
+      label: "Admin Password"
+      description: "Odoo admin password"
+      required: true
+      default: "admin"
+      type: "password"
+    - variable: "CSV_SEP"
+      label: "CSV Seperator"
+      description: "Comma seperated value file, internal seperator e.g. ,"
+      required: true
+      default: ","
+      type: "string"
+    - variable: "HOST"
+      label: "DB Host"
+      description: "Database Host in docker e.g. db"
+      required: true
+      default: "db"
+      type: "string"
+    - variable: "PORT"
+      label: "DB Port"
+      description: "Database port e.g. 5432"
+      required: true
+      default: "5432"
+      type: "string"
+    - variable: "USER"
+      label: "DB User"
+      description: "Database user name"
+      required: true
+      default: "odoo"
+      type: "string"
+    - variable: "PASSWORD"
+      label: "DB Password"
+      description: "Database password, default odoo"
+      required: true
+      default: "odoo"
+      type: "password"
+    - variable: "DB_MAXCONN"
+      label: "DB Max Connections"
+      description: "Maximum number of concurrent database connections e.g 64"
+      required: true
+      default: "64"
+      type: "string"
+    - variable: "DB_NAME"
+      label: "DB Name"
+      description: "Name of database to pre-load e.g. odoo"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "DB_TEMPLATE"
+      label: "DB Template"
+      description: "Database default template e.g. template1"
+      required: true
+      default: "template1"
+      type: "string"
+    - variable: "DB_FILTER"
+      label: "DB Filter"
+      description: "Databse subdomain filter for multiple accounts e.g. ^%d$"
+      required: true
+      default: ".*"
+      type: "string"
+    - variable: "DEBUG_MODE"
+      label: "Debug Mode"
+      description: "Start Odoo with the Developer Mode set to on"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "EMAIL_FROM"
+      label: "Email From"
+      description: "Specify the SMTP email address for sending email"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "MEM_LIMIT_H"
+      label: "Memory Limit Hard"
+      description: "Maximum allowed virtual memory, in bytes, per worker, when reached, any memory allocation will fail e.g. 805306368 = 768MiB"
+      required: true
+      default: "805306368"
+      type: "string"
+    - variable: "MEM_LIMIT_S"
+      label: "Memory Limit Soft"
+      description: "Maximum allowed virtual memory, in bytes, per worker, when reached the worker be reset after the current request e.g. 671088640 = 640MiB"
+      required: true
+      default: "671088640"
+      type: "string"
+    - variable: "LIMIT_REQ"
+      label: "Limit Requests"
+      description: "Maximum number of requests to be processed per worker"
+      required: true
+      default: "8192"
+      type: "string"
+    - variable: "LIMIT_TIME_CPU"
+      label: "CPU Time Limit"
+      description: "Maximum allowed CPU time, in seconds, per request"
+      required: true
+      default: "60"
+      type: "string"
+    - variable: "LIMIT_TIME_REAL"
+      label: "Real Time Limit"
+      description: "Maximum allowed Real time, in seconds, per request"
+      required: true
+      default: "120"
+      type: "string"
+    - variable: "LIST_DB"
+      label: "List DB"
+      description: "List databases, when set to false Odoo will not return a list of the databases available"
+      options:
+        - True
+        - False
+      default: "true"
+      type: "enum"
+    - variable: "LOG_DB"
+      label: "Log DB"
+      description: "If True, writes log to the ‘ir_logging’ table in the database"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "LOG_HANDLER"
+      label: "Log Handler"
+      description: "Fomat is a list of ‘module:log_level’ pairs. The default value is ‘:INFO’ – it means the default logging level is ‘INFO’ for all modules, e.g. openerp.addons.my_addon1:DEBUG,openerp.addons.my_addon2:DEBUG"
+      required: true
+      default: "[':INFO']"
+      type: "string"
+    - variable: "LOG_LEVEL"
+      label: "Log Level"
+      description: "One of the following levels 'info', 'warn', 'error', 'critical', 'debug', 'debug_sql', 'debug_rpc_answer', 'debug_rpc'"
+      required: true
+      options:
+        - info
+        - warn
+        - error
+        - critical
+        - debug
+        - debug_sql
+        - debug_rpc
+        - debug_rpc_answer
+      default: "info"
+      type: "enum"
+    - variable: "LOGFILE"
+      label: "Logfile"
+      description: "Log filename e.g. /var/log/odoo/error.log. If none, it defaults to stdout (terminal)"
+      required: true
+      default: "None"
+      type: "string"
+    - variable: "CHRON_THREADS"
+      label: "Max Chron Threads"
+      description: "Number of workers dedicated to cron jobs. Defaults to 2. The workers are threads in multithreading mode and processes in multiprocessing mode."
+      required: true
+      default: "2"
+      type: "string"
+    - variable: "OSV_MEM_AGE"
+      label: "OSV Memory Age"
+      description: "Maximum age, in hours, of records kept in the virtual osv_memory tables"
+      required: true
+      default: "1.0"
+      type: "string"
+    - variable: "OSV_MEM_COUNT"
+      label: "OSV Memory Count"
+      description: "Maximum number of records kept in the virtual osv_memory tables"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "PROXY_MODE"
+      label: "Proxy Mode"
+      description: "Set to true when behind a HTTPS/SSL reverse proxy"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "SMTP_PASSWORD"
+      label: "SMTP Password"
+      description: "Specify the SMTP password for sending email"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "SMTP_PORT"
+      label: "SMTP Port"
+      description: "Specify the SMTP port"
+      required: true
+      default: "25"
+      type: "string"
+    - variable: "SMTP_SERVER"
+      label: "SMTP_Server"
+      description: "Specify the SMTP server for sending email"
+      required: true
+      default: "localhost"
+      type: "string"
+    - variable: "SMTP_SSL"
+      label: "SMTP SSL"
+      description: "If passed, SMTP connections will be encrypted with SSL e.g. STARTTLS"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "SMTP_USER"
+      label: "SMTP User"
+      description: "Specify the SMTP username for sending email"
+      required: true
+      default: "False"
+      type: "string"
+    - variable: "WORKERS"
+      label: "Workers"
+      description: "Specify the number of workers, 0 disable prefork mode. Worker number calculation rule of thumb; (#CPU * 2) + 1, Cron workers need CPU, 1 worker ~= 6 concurrent users"
+      required: true
+      default: "0"
+      type: "string"
+    - variable: "XMLRPC"
+      label: "XMLRPC"
+      description: "If false, do not start the HTTP or long-polling workers (may still start cron workers), has no effect if --test-enable is set, as tests require an accessible HTTP server"
+      required: true
+      default: "True"
+      type: "string"
+    - variable: "XMLRPC_IP"
+      label: "XMLRPC Interface"
+      description: "TCP/IP address on which the HTTP server listens, defaults to 0.0.0.0 (all addresses)"
+      required: true
+      default: "0.0.0.0"
+      type: "string"
+    - variable: "XMLRPC_PORT"
+      label: "XMLRPC Port"
+      description: "Port on which the HTTP server listens, defaults to 8069"
+      required: true
+      default: "8069"
+      type: "string"
+    - variable: "XMLRPCS"
+      label: "XMLRPCS"
+      description: "DEPRECIATED use reverse proxy"
+      required: true
+      default: "True"
+      type: "string"
+    - variable: "XMLRPCS_IP"
+      label: "XMLRPCS Interface"
+      description: "DEPRECIATED use reverse proxy"
+      required: true
+      default: "0.0.0.0"
+      type: "string"
+    - variable: "XMLRPCS_PORT"
+      label: "XMLRPCS Port"
+      description: "DEPRECIATED use reverse proxy"
+      required: true
+      default: "8071"
+      type: "string"
+    - variable: "ODOO_CONFIG_VOL"
+      label: "odoo.conf"
+      description: "Host directory or Convoy volume name for /etc/odoo/odoo.conf, followed by a colon (':'). E.g.: '/odoo/config:'; 'odoo-config:'"
+      default: "/odoo/config:"
+      type: "string"
+    - variable: "ODOO_ADDONS-VOL"
+      label: "addons"
+      default: "/odoo/addons:"
+      description: "Host directory or Convoy volume name for /usr/lib/python3/dist-packages/odoo/addons, followed by a colon (':'). E.g.: '/odoo/addons:'; 'odoo-addons:'"
+      type: "string"
+    - variable: "ODOO_WEB_DATA_VOL"
+      label: "Odoo web data (/var/lib/odoo)"
+      default: "/odoo/webdata:"
+      description: "Host directory or Convoy volume name for /var/lib/odoo, followed by a colon (':'). E.g.: '/odoo/webdata:'; 'odoo-config:'"
+      type: "string"
+    - variable: PGUSER
+      description: "Postgres username"
+      label: "Postgres username"
+      required: true
+      default: "odoo"
+      type: "string"
+    - variable: PGPASS
+      description: "Database password"
+      label: "DB password"
+      required: true
+      default: "password"
+      type: "password"
