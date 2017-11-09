@@ -63,11 +63,12 @@ services:
       - ${XXSPORT}:${IXSPORT}
       - ${XLPPORT}:${ILPPORT}
     labels:
-      io.rancher.sidekicks: OdooConfig, OdooAddons, OdooWebData
+      io.rancher.sidekicks: OdooConfig, OdooAddons
+#      , OdooWebData
     volumes_from:
       - OdooConfig
       - OdooAddons
-      - OdooWebData
+#      - OdooWebData
       
   OdooDB:
     image: busybox
@@ -93,11 +94,11 @@ services:
     volumes:
       - ${ODOO_ADDONS_VOL}/usr/lib/python3/dist-packages/odoo/addons
     volume_driver: ${VOLUME_DRIVER}
-  OdooWebData:
-    image: busybox
-    labels:
-      io.rancher.container.start_once: 'true'
-    entrypoint: /bin/true
-    volumes:
-      - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
-    volume_driver: ${VOLUME_DRIVER}
+ # OdooWebData:
+ #   image: busybox
+ #   labels:
+ #     io.rancher.container.start_once: 'true'
+ #   entrypoint: /bin/true
+ #   volumes:
+ #     - ${ODOO_WEB_DATA_VOL}/var/lib/odoo
+ #   volume_driver: ${VOLUME_DRIVER}
