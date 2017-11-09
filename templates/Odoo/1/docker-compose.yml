@@ -9,6 +9,10 @@ services:
       - "5432:5432"
     expose:
       - "5432"
+    labels:
+      io.rancher.sidekicks: OdooDB
+    volumes_from:
+      - OdooDB
     volumes:
       - odoo_db:/var/lib/postgresql/data
   odoo:
@@ -64,6 +68,15 @@ services:
       - OdooConfig
       - OdooAddons
       - OdooWebData
+      
+  OdooDB:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: 'true'
+    entrypoint: /bin/true
+    volumes:
+      - ${ODOO_DB_VOL}/var/lib/postgresql/data
+    volume_driver: ${VOLUME_DRIVER}
   OdooConfig:
     image: busybox
     labels:
