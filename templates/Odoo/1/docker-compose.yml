@@ -13,8 +13,8 @@ services:
       io.rancher.sidekicks: OdooDB
     volumes_from:
       - OdooDB
-    volumes:
-      - odoo_db:/var/lib/postgresql/data
+#    volumes:
+#      - odoo_db:/var/lib/postgresql/data
   odoo:
     image: ${IMAGE}
     environment:
