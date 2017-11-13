@@ -1,6 +1,6 @@
 virtualmin:
   build:
-    context: ${OS}
+    context=${OS}
     args:
       - FQDN=${FQDN}
       - UNINSTALL=${UNINSTALL}
