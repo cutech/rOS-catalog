@@ -1,55 +1,56 @@
 version: '2'
-virtualmin:
-  build:
-    context: ${OS}
-    args:
-      - FQDN=${FQDN}
-      - UNINSTALL=${UNINSTALL}
-      - HOSTNAME=${HOSTNAME}
-      - MINIMAL=${MINIMAL}
-      - BUNDLE=${BUNDLE}
-      - DISABLE=${DISABLE}
-  environment:
-    - PASSWD=${PASSWD}
-  dns:
-    - ${DNS1}
-    - ${DNS2}
-  ports:
-    - "20:20"
-    - "21:21"
-    - "${SSH}:22"
-    - "25:25"
-    - "53:53"
-    - "53:53/udp"
-    - "80:80"
-    - "110:110"
-    - "111:111"
-    - "143:143"
-    - "443:443"
-    - "587:587"
-    - "993:993"
-    - "995:995"
-    - "3306:3306"
-    - "10000:10000"
-    - "20000:20000"
-    - "38532:38532"
-    - "40259:40259"
-  hostname: ${HOSTNAME}
-  tty: true
-  stdin_open: true
-  user: root
-  command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
-  labels:
-    io.rancher.sidekicks: VirtualminData
-  volumes_from:
-    - VirtualminData
+services:
+  virtualmin:
+    build:
+      context: ${OS}
+      args:
+        - FQDN=${FQDN}
+        - UNINSTALL=${UNINSTALL}
+        - HOSTNAME=${HOSTNAME}
+        - MINIMAL=${MINIMAL}
+        - BUNDLE=${BUNDLE}
+        - DISABLE=${DISABLE}
+    environment:
+      - PASSWD=${PASSWD}
+    dns:
+      - ${DNS1}
+      - ${DNS2}
+    ports:
+      - "20:20"
+      - "21:21"
+      - "${SSH}:22"
+      - "25:25"
+      - "53:53"
+      - "53:53/udp"
+      - "80:80"
+      - "110:110"
+      - "111:111"
+      - "143:143"
+      - "443:443"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "3306:3306"
+      - "10000:10000"
+      - "20000:20000"
+      - "38532:38532"
+      - "40259:40259"
+    hostname: ${HOSTNAME}
+    tty: true
+    stdin_open: true
+    user: root
+    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
+    labels:
+      io.rancher.sidekicks: VirtualminData
+    volumes_from:
+      - VirtualminData
 
-VirtualminData:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  net: none
-  entrypoint: /bin/true
-  volumes:
-    - ${DATA_VOLUME}/home
-  volume_driver: ${VOLUME_DRIVER}
+  VirtualminData:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: 'true'
+    net: none
+    entrypoint: /bin/true
+    volumes:
+      - ${DATA_VOLUME}/home
+    volume_driver: ${VOLUME_DRIVER}
