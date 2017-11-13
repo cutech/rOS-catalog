@@ -9,7 +9,7 @@ virtualmin:
       - BUNDLE: ${BUNDLE}
       - DISABLE: ${DISABLE}
   environment:
-    - PASSWD=${PASSWD}
+    - PASSWD: ${PASSWD}
   dns:
     - ${DNS1}
     - ${DNS2}
