@@ -2,7 +2,7 @@ virtualmin:
   build:
     dockerfile: ${OS}
     args:
-      - FQDN=${FQDN}
+      - FQDN: ${FQDN}
       - UNINSTALL: ${UNINSTALL}
       - HOSTNAME: ${HOSTNAME}
       - MINIMAL: ${MINIMAL}
