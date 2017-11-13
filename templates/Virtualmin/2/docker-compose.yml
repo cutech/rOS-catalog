@@ -1,6 +1,6 @@
 virtualmin:
   build:
-    dockerfile=${OS}
+    dockerfile= "${OS}"
     args:
       - FQDN=${FQDN}
       - UNINSTALL=${UNINSTALL}
