@@ -3,11 +3,11 @@ virtualmin:
     dockerfile: ${OS}
     args:
       - FQDN=${FQDN}
-      - UNINSTALL=${UNINSTALL}
-      - HOSTNAME=${HOSTNAME}
-      - MINIMAL=${MINIMAL}
-      - BUNDLE=${BUNDLE}
-      - DISABLE=${DISABLE}
+      - UNINSTALL: ${UNINSTALL}
+      - HOSTNAME: ${HOSTNAME}
+      - MINIMAL: ${MINIMAL}
+      - BUNDLE: ${BUNDLE}
+      - DISABLE: ${DISABLE}
   environment:
     - PASSWD=${PASSWD}
   dns:
