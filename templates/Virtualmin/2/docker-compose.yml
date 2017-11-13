@@ -2,17 +2,17 @@ virtualmin:
   build:
     dockerfile: ${OS}
     args:
-      - FQDN: ${FQDN}
-      - UNINSTALL: ${UNINSTALL}
-      - HOSTNAME: ${HOSTNAME}
-      - MINIMAL: ${MINIMAL}
-      - BUNDLE: ${BUNDLE}
-      - DISABLE: ${DISABLE}
+      - FQDN: "${FQDN}"
+      - UNINSTALL: "${UNINSTALL}"
+      - HOSTNAME: "${HOSTNAME}"
+      - MINIMAL: "${MINIMAL}"
+      - BUNDLE: "${BUNDLE}"
+      - DISABLE: "${DISABLE}"
   environment:
-    - PASSWD: ${PASSWD}
+    - PASSWD: "${PASSWD}"
   dns:
-    - ${DNS1}
-    - ${DNS2}
+    - "${DNS1}"
+    - "${DNS2}"
   ports:
     - "20:20"
     - "21:21"
