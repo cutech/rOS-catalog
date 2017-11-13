@@ -1,6 +1,6 @@
 virtualmin:
   build:
-    dockerfile=https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile
+    context: ${OS}
     args:
       - FQDN=${FQDN}
       - UNINSTALL=${UNINSTALL}
