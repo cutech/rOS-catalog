@@ -1,6 +1,6 @@
 .catalog:
   name: "Virtualmin"
-  version: "v0.3"
+  version: "v0.2"
   description: "Virtualmin server"
   uuid: virtualmin-0
   questions:
@@ -27,7 +27,7 @@
         - "centos:6.8"
         - "centos:6.7"
         - "centos:6.6"
-        - "debian:stretch"
+        - "cutech/ros-vmin-deb-9"
         - "debian:stretch-backports"
         - "debian:stretch-slim"
         - "debian:jessie"
@@ -38,7 +38,7 @@
         - "debian:wheezy-slim"
         - "ubuntu:16.04"
         - "ubuntu:14.04"
-      default: ""
+      default: "cutech/ros-vmin-deb-9"
     - variable: "DNS1"
       label: "Extra DNS1"
       description: "DNS1 in addition to host server"
@@ -109,11 +109,7 @@
       default: ""
     - variable: "DATA_VOLUME"
       label: "Data Volume"
-      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/virtualmin/home:'; 'virtualmin-home:'"
-      type: "string"
-    - variable: "SCRIPTS_VOLUME"
-      label: "Scripts Volume"
-      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/virtualmin/scripts:'; 'virtualmin-scripts:'"
+      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/mnt/home:'; 'virtualmin-data:'"
       type: "string"
     - variable: "VOLUME_DRIVER"
       description: "Name of Convoy Storage Pool, if one is used."
