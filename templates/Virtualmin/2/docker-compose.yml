@@ -11,6 +11,14 @@ services:
         - BUNDLE=${BUNDLE}
         - DISABLE=${DISABLE}
         - PASSWD=${PASSWD}
+    environment:
+      - FQDN=${FQDN}
+      - UNINSTALL=${UNINSTALL}
+      - HOSTNAME=${HOSTNAME}
+      - MINIMAL=${MINIMAL}
+      - BUNDLE=${BUNDLE}
+      - DISABLE=${DISABLE}
+      - PASSWD=${PASSWD}
     dns:
       - ${DNS1}
       - ${DNS2}
