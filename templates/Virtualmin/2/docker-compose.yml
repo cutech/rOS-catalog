@@ -64,9 +64,9 @@ services:
 
   VirtualminData:
     image: busybox
-      build:
-        args:
-          - DATA_VOLUME=${DATA_VOLUME}
+    build:
+      args:
+        - DATA_VOLUME=${DATA_VOLUME}
     environment:
       - DATA_VOLUME=${DATA_VOLUME}
     labels:
