@@ -11,6 +11,11 @@ services:
         - BUNDLE=${BUNDLE}
         - DISABLE=${DISABLE}
         - PASSWD=${PASSWD}
+        - DNS1=${DNS1}
+        - DNS2=${DNS2}
+        - SSH=${SSH}
+        - DATA_VOLUME=${DATA_VOLUME}
+        - VOLUME_DRIVER=${VOLUME_DRIVER}
     environment:
       - FQDN=${FQDN}
       - UNINSTALL=${UNINSTALL}
@@ -19,6 +24,11 @@ services:
       - BUNDLE=${BUNDLE}
       - DISABLE=${DISABLE}
       - PASSWD=${PASSWD}
+      - DNS1=${DNS1}
+      - DNS2=${DNS2}
+      - SSH=${SSH}
+      - DATA_VOLUME=${DATA_VOLUME}
+      - VOLUME_DRIVER=${VOLUME_DRIVER}
     dns:
       - ${DNS1}
       - ${DNS2}
