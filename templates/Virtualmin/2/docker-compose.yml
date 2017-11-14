@@ -3,6 +3,7 @@ services:
   virtualmin:
     build:
       context: ${OS}
+      dockerfile: ${DF}
       args:
         - FQDN=${FQDN}
         - UNINSTALL=${UNINSTALL}
