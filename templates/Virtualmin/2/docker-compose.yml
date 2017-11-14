@@ -59,19 +59,21 @@ services:
 #    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
     labels:
       io.rancher.sidekicks: VirtualminData
-    volumes_from:
-      - VirtualminData
-
-  VirtualminData:
-    image: busybox
-    build:
-      args:
-        - DATA_VOLUME=${DATA_VOLUME}
-    environment:
-      - DATA_VOLUME=${DATA_VOLUME}
-    labels:
-      io.rancher.container.start_once: 'true'
-    entrypoint: /bin/true
     volumes:
       - ${DATA_VOLUME}/home
-    volume_driver: ${VOLUME_DRIVER}
+#    volumes_from:
+#      - VirtualminData
+
+#  VirtualminData:
+#    image: busybox
+#    build:
+#      args:
+#        - DATA_VOLUME=${DATA_VOLUME}
+#    environment:
+#      - DATA_VOLUME=${DATA_VOLUME}
+#    labels:
+#      io.rancher.container.start_once: 'true'
+#    entrypoint: /bin/true
+#    volumes:
+#      - ${DATA_VOLUME}/home
+#    volume_driver: ${VOLUME_DRIVER}
