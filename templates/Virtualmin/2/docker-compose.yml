@@ -2,8 +2,7 @@ version: '2'
 services:
   virtualmin:
     build:
-      context: ${OS}
-      dockerfile: ${DF}
+      context: ${OS}#:${DF}
       args:
         - FQDN=${FQDN}
         - UNINSTALL=${UNINSTALL}
