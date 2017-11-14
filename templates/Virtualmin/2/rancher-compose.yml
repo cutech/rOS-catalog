@@ -39,7 +39,7 @@
         - "debian:wheezy-slim"
         - "ubuntu:16.04"
         - "ubuntu:14.04"
-        default: "https://github.com/cutech/docker-virtualmin.git"
+      default: "https://github.com/cutech/docker-virtualmin.git"
     - variable: "DF"
       label: "Dockerfile"
       description: "Context Dockerfile"
