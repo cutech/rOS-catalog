@@ -59,8 +59,8 @@ services:
 #    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
 #    labels:
 #      io.rancher.sidekicks: VirtualminData
-    volumes:
-      - ${DATA_VOLUME}/home
+#    volumes:
+#      - ${DATA_VOLUME}/home
 #    volumes_from:
 #      - VirtualminData
 
