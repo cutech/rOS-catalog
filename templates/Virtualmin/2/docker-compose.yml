@@ -10,8 +10,8 @@ services:
         - MINIMAL=${MINIMAL}
         - BUNDLE=${BUNDLE}
         - DISABLE=${DISABLE}
-    environment:
-      - PASSWD=${PASSWD}
+        - PASSWD=${PASSWD}
+        - HOSTNAME=${HOSTNAME}
     dns:
       - ${DNS1}
       - ${DNS2}
@@ -35,11 +35,11 @@ services:
       - "20000:20000"
       - "38532:38532"
       - "40259:40259"
-    hostname: ${HOSTNAME}
+
     tty: true
     stdin_open: true
     user: root
-    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
+#    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
     labels:
       io.rancher.sidekicks: VirtualminData
     volumes_from:
