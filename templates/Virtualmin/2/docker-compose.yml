@@ -46,6 +46,8 @@ services:
 
   VirtualminData:
     image: busybox
+    args:
+        - DATA_VOLUME=${DATA_VOLUME}
     labels:
       io.rancher.container.start_once: 'true'
     entrypoint: /bin/true
