@@ -1,8 +1,8 @@
 version: '2'
 services:
   virtualmin:
+    image: ${OS}
     build:
-      context: ${OS}
       args:
         - FQDN=${FQDN}
         - UNINSTALL=${UNINSTALL}
