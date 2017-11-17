@@ -56,6 +56,8 @@ services:
       - "20000:20000"
       - "38532:38532"
       - "40259:40259"
+    labels:
+      io.rancher.sidekicks: VirtualminData
     volumes_from:
       - VirtualminData
 
