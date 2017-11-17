@@ -1,5 +1,5 @@
 name: "Virtualmin"
-version: '2'
+version: "v0.2"
 services:
   vsrv-hv:
     description: "Virtualmin server"
