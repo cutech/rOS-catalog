@@ -23,7 +23,6 @@ services:
     - ${DNS2}
     hostname: ${HOSTNAME}
     domainname: ${DOMAIN}
-    tty: true
     environment:
       - DOMAIN=${DOMAIN}
       - UNINSTALL=${UNINSTALL}
