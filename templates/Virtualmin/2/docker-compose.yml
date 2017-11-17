@@ -56,11 +56,14 @@ services:
       - "20000:20000"
       - "38532:38532"
       - "40259:40259"
-    labels:
-      io.rancher.sidekicks: data
-  data:
+    volumes_from:
+      - VirtualminData
+
+  VirtualminData:
     image: busybox
-    stdin_open: true
+    labels:
+      io.rancher.container.start_once: 'true'
+    entrypoint: /bin/true
     volumes:
     - ${DATA_VOLUME}:/home
     - ${SCRIPT_DRIVER}:/usr/share/webmin/virtual-server/scripts
