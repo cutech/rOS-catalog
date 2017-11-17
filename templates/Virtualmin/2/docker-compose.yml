@@ -13,6 +13,7 @@ services:
         - DNS1=${DNS1}
         - DNS2=${DNS2}
         - DATA_VOLUME=${DATA_VOLUME}
+        - SCRIPT_VOLUME=${SCRIPT_VOLUME}
         - VOLUME_DRIVER=${VOLUME_DRIVER}
     image: ${OS}
     tty: true
@@ -68,6 +69,6 @@ services:
     entrypoint: /bin/true
     volumes:
       - ${DATA_VOLUME}:/home
-      - ${SCRIPT_DRIVER}:/usr/share/webmin/virtual-server/scripts
+      - ${SCRIPT_VOLUME}:/usr/share/webmin/virtual-server/scripts
     tty: true
     volume_driver: ${VOLUME_DRIVER}
