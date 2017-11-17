@@ -1,4 +1,4 @@
-.catalog
+.catalog:
   name: "Virtualmin"
   version: "v.03"
   description: "Virtualmin server"
