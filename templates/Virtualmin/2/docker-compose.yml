@@ -67,7 +67,7 @@ services:
       io.rancher.container.start_once: 'true'
     entrypoint: /bin/true
     volumes:
-    - ${DATA_VOLUME}:/home
-    - ${SCRIPT_DRIVER}:/usr/share/webmin/virtual-server/scripts
+      - ${DATA_VOLUME}:/home
+      - ${SCRIPT_DRIVER}:/usr/share/webmin/virtual-server/scripts
     tty: true
     volume_driver: ${VOLUME_DRIVER}
