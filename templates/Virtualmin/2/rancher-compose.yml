@@ -1,108 +1,107 @@
-name: "Virtualmin"
-version: '2'
-services:
-  vsrv-hv:
-    description: "Virtualmin server"
-    uuid: virtualmin-0
-    questions:
-      - variable: "PASSWD"
-        label: "Password"
-        description: "Root password"
-        type: "password"
-        default: "admin"
-        required: true
-      - variable: "OS"
-        label: "Operating System"
-        description: "Supported Operating Systems; CentOS/RHEL Linux 6 and 7 on x86_64 | Debian 7, 8, and 9, on i386 and amd64 | Ubuntu 14.04 LTS and 16.04 LTS, on i386 and amd64"
-        required: true
-        type: "enum"
-        options:
-          - "/home/rancher/vmin/df/Dockerfile"
-          - "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
-        default: "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
-      - variable: "DNS1"
-        label: "Extra DNS1"
-        description: "DNS1 in addition to host server"
-        type: "string"
-        required: false
-        default: "127.0.0.1"
-      - variable: "DNS2"
-        label: "Extra DNS2"
-        description: "DNS2 in addition to host server"
-        type: "string"
-        required: false
-        default: "8.8.8.8"
-      - variable: "SSH"
-        label: "SSH external port"
-        description: "RancherOS is hardcoded at 22"
-        type: "string"
-        required: true
-        default: "2222"
-      - variable: "UNINSTALL"
-        label: "Uninstall"
-        description: "Removes all Virtualmin packages (do not use on a production system)"
-        required: false
-        type: "enum"
-        options:
-          - "-u"
-        default: ""
-      - variable: "HOSTNAME"
-        label: "Hostname"
-        description: "Server hostname"
-        type: "string"
-        default: "roshv"
-        required: true
-      - variable: "DOMAIN"
-        label: "Domain Name"
-        description: "Domain name e.g example.com"
-        default: "c-u-tech.com"
-        required: true
-        type: "string"
-      - variable: "SETUP"
-        label: "Setup"
-        description: "Setup software repositories and exit (no installation or configuration)"
-        required: false
-        type: "enum"
-        options:
-          - "-s"
-        default: ""
-      - variable: "MINIMAL"
-        label: "Minimal"
-        description: "Install a smaller subset of packages for low-memory/low-resource systems"
-        required: false
-        type: "enum"
-        options:
-          - "-m"
-        default: ""
-      - variable: "BUNDLE"
-        label: "Bundle"
-        description: "Choose bundle to install (LAMP or LEMP, defaults to LAMP)"
-        required: false
-        type: "enum"
-        options:
-          - "-b LAMP"
-          - "-b LEMP"
-        default: ""
-      - variable: "DISABLE"
-        label: "Disable"
-        description: "Disable feature [SCL|EPEL|PG]"
-        required: false
-        type: "enum"
-        options:
-          - "--disable SCL"
-          - "--disable EPEL"
-          - "--disable PG"
-        default: ""
-      - variable: "DATA_VOLUME"
-        label: "Data Volume"
-        description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/rancher/vmin/home:'; 'virtualmin-data:'"
-        type: "string"
-        default: "/rancher/vmin/home:"
-      - variable: "SCRIPT_VOLUME"
-        label: "Script Volume"
-        description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/home/rancher/vmin/scripts:'; 'virtualmin-scripts:'"
-        type: "string"
-        default: "/home/rancher/vmin/scripts:"
-      - variable: "VOLUME_DRIVER"
-        description: "Name of Convoy Storage Pool, if one is used."
-        type: "string"
+.catalog
+  name: "Virtualmin"
+  version: 'v.03'
+  description: "Virtualmin server"
+  uuid: virtualmin-0
+  questions:
+    - variable: "PASSWD"
+      label: "Password"
+      description: "Root password"
+      type: "password"
+      default: "admin"
+      required: true
+    - variable: "OS"
+      label: "Operating System"
+      description: "Supported Operating Systems; CentOS/RHEL Linux 6 and 7 on x86_64 | Debian 7, 8, and 9, on i386 and amd64 | Ubuntu 14.04 LTS and 16.04 LTS, on i386 and amd64"
+      required: true
+      type: "enum"
+      options:
+        - "/home/rancher/vmin/df/Dockerfile"
+        - "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
+      default: "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
+    - variable: "DNS1"
+      label: "Extra DNS1"
+      description: "DNS1 in addition to host server"
+      type: "string"
+      required: false
+      default: "127.0.0.1"
+    - variable: "DNS2"
+      label: "Extra DNS2"
+      description: "DNS2 in addition to host server"
+      type: "string"
+      required: false
+      default: "8.8.8.8"
+    - variable: "SSH"
+      label: "SSH external port"
+      description: "RancherOS is hardcoded at 22"
+      type: "string"
+      required: true
+      default: "2222"
+    - variable: "UNINSTALL"
+      label: "Uninstall"
+      description: "Removes all Virtualmin packages (do not use on a production system)"
+      required: false
+      type: "enum"
+      options:
+        - "-u"
+      default: ""
+    - variable: "HOSTNAME"
+      label: "Hostname"
+      description: "Server hostname"
+      type: "string"
+      default: "roshv"
+      required: true
+    - variable: "DOMAIN"
+      label: "Domain Name"
+      description: "Domain name e.g example.com"
+      default: "c-u-tech.com"
+      required: true
+      type: "string"
+    - variable: "SETUP"
+      label: "Setup"
+      description: "Setup software repositories and exit (no installation or configuration)"
+      required: false
+      type: "enum"
+      options:
+        - "-s"
+      default: ""
+    - variable: "MINIMAL"
+      label: "Minimal"
+      description: "Install a smaller subset of packages for low-memory/low-resource systems"
+      required: false
+      type: "enum"
+      options:
+        - "-m"
+      default: ""
+    - variable: "BUNDLE"
+      label: "Bundle"
+      description: "Choose bundle to install (LAMP or LEMP, defaults to LAMP)"
+      required: false
+      type: "enum"
+      options:
+        - "-b LAMP"
+        - "-b LEMP"
+      default: ""
+    - variable: "DISABLE"
+      label: "Disable"
+      description: "Disable feature [SCL|EPEL|PG]"
+      required: false
+      type: "enum"
+      options:
+        - "--disable SCL"
+        - "--disable EPEL"
+        - "--disable PG"
+      default: ""
+    - variable: "DATA_VOLUME"
+      label: "Data Volume"
+      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/rancher/vmin/home:'; 'virtualmin-data:'"
+      type: "string"
+      default: "/rancher/vmin/home:"
+    - variable: "SCRIPT_VOLUME"
+      label: "Script Volume"
+      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/home/rancher/vmin/scripts:'; 'virtualmin-scripts:'"
+      type: "string"
+      default: "/home/rancher/vmin/scripts:"
+    - variable: "VOLUME_DRIVER"
+      description: "Name of Convoy Storage Pool, if one is used."
+      type: "string"
