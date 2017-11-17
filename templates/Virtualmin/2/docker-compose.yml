@@ -2,6 +2,7 @@ version: '2'
 services:
   vsrv-hv:
     build:
+      context: ${OS}
       args:
         - DOMAIN=${DOMAIN}
         - UNINSTALL=${UNINSTALL}
@@ -15,7 +16,6 @@ services:
         - DATA_VOLUME=${DATA_VOLUME}
         - SCRIPT_VOLUME=${SCRIPT_VOLUME}
         - VOLUME_DRIVER=${VOLUME_DRIVER}
-    image: ${OS}
     tty: true
     stdin_open: true
     dns:
