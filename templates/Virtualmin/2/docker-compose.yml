@@ -1,10 +1,9 @@
 version: '2'
 services:
-  virtualmin:
-    image: ${OS}
+  vsrv-hv:
     build:
       args:
-        - FQDN=${FQDN}
+        - DOMAIN=${DOMAIN}
         - UNINSTALL=${UNINSTALL}
         - HOSTNAME=${HOSTNAME}
         - MINIMAL=${MINIMAL}
@@ -13,11 +12,19 @@ services:
         - PASSWD=${PASSWD}
         - DNS1=${DNS1}
         - DNS2=${DNS2}
-        - SSH=${SSH}
         - DATA_VOLUME=${DATA_VOLUME}
         - VOLUME_DRIVER=${VOLUME_DRIVER}
+    image: ${OS}
+    tty: true
+    stdin_open: true
+    dns:
+    - ${DNS1}
+    - ${DNS2}
+    hostname: ${HOSTNAME}
+    domainname: ${DOMAIN}
+    tty: true
     environment:
-      - FQDN=${FQDN}
+      - DOMAIN=${DOMAIN}
       - UNINSTALL=${UNINSTALL}
       - HOSTNAME=${HOSTNAME}
       - MINIMAL=${MINIMAL}
@@ -26,12 +33,9 @@ services:
       - PASSWD=${PASSWD}
       - DNS1=${DNS1}
       - DNS2=${DNS2}
-      - SSH=${SSH}
       - DATA_VOLUME=${DATA_VOLUME}
+      - SCRIPT_VOLUME=${SCRIPT_VOLUME}
       - VOLUME_DRIVER=${VOLUME_DRIVER}
-    dns:
-      - ${DNS1}
-      - ${DNS2}
     ports:
       - "20:20"
       - "21:21"
@@ -52,28 +56,13 @@ services:
       - "20000:20000"
       - "38532:38532"
       - "40259:40259"
-
-    tty: true
+    labels:
+      io.rancher.sidekicks: data
+  data:
+    image: busybox
     stdin_open: true
-    user: root
-#    command: [/bin/bash, -c, "screen -S ops -d -m /bin/bash"]
-#    labels:
-#      io.rancher.sidekicks: VirtualminData
-#    volumes:
-#      - ${DATA_VOLUME}/home
-#    volumes_from:
-#      - VirtualminData
-
-#  VirtualminData:
-#    image: busybox
-#    build:
-#      args:
-#        - DATA_VOLUME=${DATA_VOLUME}
-#    environment:
-#      - DATA_VOLUME=${DATA_VOLUME}
-#    labels:
-#      io.rancher.container.start_once: 'true'
-#    entrypoint: /bin/true
-#    volumes:
-#      - ${DATA_VOLUME}/home
-#    volume_driver: ${VOLUME_DRIVER}
+    volumes:
+    - ${DATA_VOLUME}:/home
+    - ${SCRIPT_DRIVER}:/usr/share/webmin/virtual-server/scripts
+    tty: true
+    volume_driver: ${VOLUME_DRIVER}
