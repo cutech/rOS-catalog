@@ -10,7 +10,7 @@ services:
         - MINIMAL=${MINIMAL}
         - BUNDLE=${BUNDLE}
         - DISABLE=${DISABLE}
-        - PASSWD=$${PASSWD}
+        - PASSWD=${PASSWD}
         - DNS1=${DNS1}
         - DNS2=${DNS2}
         - DATA_VOLUME=${DATA_VOLUME}
@@ -30,7 +30,7 @@ services:
       - MINIMAL=${MINIMAL}
       - BUNDLE=${BUNDLE}
       - DISABLE=${DISABLE}
-      - PASSWD=$${PASSWD}
+      - PASSWD=${PASSWD}
       - DNS1=${DNS1}
       - DNS2=${DNS2}
       - DATA_VOLUME=${DATA_VOLUME}
