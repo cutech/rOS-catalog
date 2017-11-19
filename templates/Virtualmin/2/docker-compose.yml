@@ -1,6 +1,6 @@
 version: '2'
 services:
-  vsrv-hv:
+  vsrv:
     build:
       context: ${OS}
       args:
