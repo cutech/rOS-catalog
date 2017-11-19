@@ -1,5 +1,5 @@
 .catalog:
-  name: "Virtualmin"
+  name: "vMin"
   version: "v.03"
   description: "Virtualmin server"
   uuid: virtualmin-0
