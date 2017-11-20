@@ -19,6 +19,14 @@
         - "/home/rancher/vmin/df/Dockerfile"
         - "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
       default: "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
+    - variable: "EP"
+      label: "Entrypoint Script"
+      description: "Name of entrypoint script relative to the OS variable e.g. https://raw.githubusercontent.com/my/Dockerfile/entrypoint.sh"
+      required: true
+      type: "enum"
+      options:
+        - "entrypoint.sh"
+      default: "entrypoint.sh"
     - variable: "DNS1"
       label: "Extra DNS1"
       description: "DNS1 in addition to host server"
