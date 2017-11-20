@@ -23,10 +23,10 @@
       label: "Entrypoint Script"
       description: "Name of entrypoint script relative to the OS variable e.g. https://raw.githubusercontent.com/my/Dockerfile/entrypoint.sh"
       required: true
-      type: "enum"
+      type: "string"
       options:
-        - "entrypoint.sh"
-      default: "entrypoint.sh"
+        - "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/entrypoint.sh"
+      default: "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/entrypoint.sh"
     - variable: "DNS1"
       label: "Extra DNS1"
       description: "DNS1 in addition to host server"
