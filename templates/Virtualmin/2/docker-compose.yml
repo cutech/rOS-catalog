@@ -4,6 +4,9 @@ services:
     build:
       context: ${OS}
       args:
+        - OS=${OS}
+        - EP=${EP}
+#        - CMD=${CMD}
         - DOMAIN=${DOMAIN}
         - UNINSTALL=${UNINSTALL}
         - HOSTNAME=${HOSTNAME}
@@ -24,6 +27,9 @@ services:
     hostname: ${HOSTNAME}
     domainname: ${DOMAIN}
     environment:
+      - OS=${OS}
+      - EP=${EP}
+ #     - CMD=${CMD}
       - DOMAIN=${DOMAIN}
       - UNINSTALL=${UNINSTALL}
       - HOSTNAME=${HOSTNAME}
