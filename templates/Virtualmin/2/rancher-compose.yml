@@ -102,7 +102,7 @@
       default: ""
     - variable: "DATA_VOLUME"
       label: "Data Volume"
-      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/rancher/vmin/home:'; 'virtualmin-data:'"
+      description: "Host directory or Convoy volume name, followed by a colon (':'). E.g.: '/home/rancher/vmin/home:'; 'virtualmin-data:'"
       type: "string"
       default: "/home/rancher/vmin/home:"
     - variable: "SCRIPT_VOLUME"
