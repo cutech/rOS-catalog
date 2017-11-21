@@ -21,7 +21,7 @@
       default: "https://raw.githubusercontent.com/cutech/docker-virtualmin/master/deb-stretch/Dockerfile"
     - variable: "EP"
       label: "Entrypoint Script"
-      description: "Name of entrypoint script relative to the OS variable e.g. https://raw.githubusercontent.com/my/Dockerfile/entrypoint.sh"
+      description: "Name of entrypoint script relative to the OS variable e.g. https://raw.githubusercontent.com/my/path/entrypoint.sh"
       required: true
       type: "string"
       options:
