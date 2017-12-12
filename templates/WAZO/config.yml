@@ -1,0 +1,8 @@
+name: WAZO
+description: |
+  WAZO PBX base for Incredible PBX
+version: v0.1
+category: Telecommunications
+maintainer: cutech <cody@c-u-tech.com>
+license: GNU General Public License v2.0
+projectURL: https://github.com/cutech/rOS-catalog/templates/WAZO
