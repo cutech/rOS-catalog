@@ -15,8 +15,8 @@
       required: true
       type: "enum"
       options:
-        - "https://raw.githubusercontent.com/cutech/docker-wazo/Dockerfile"
-      default: "https://raw.githubusercontent.com/cutech/docker-wazo/Dockerfile"
+        - "https://raw.githubusercontent.com/cutech/docker-wazo/master/Dockerfile"
+      default: "https://raw.githubusercontent.com/cutech/docker-wazo/master/Dockerfile"
     - variable: "DNS1"
       label: "Extra DNS1"
       description: "DNS1 in addition to host server"
